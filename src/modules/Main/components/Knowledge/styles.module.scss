@@ -1,0 +1,120 @@
+﻿.knowledge {
+  margin-bottom: 120px;
+
+  &__title {
+    margin: 0px !important;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 46.8px;
+    color: var(--page-color-dark-blue);
+
+    &_red {
+      color: var(--page-color-red);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-basis: calc(33% - 10px);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 50, 75, 0.02),
+      0px 3px 7px 0px rgba(0, 50, 75, 0.03),
+      9px 5px 15px 0px rgba(0, 50, 75, 0.03),
+      13px 11px 29px 0px rgba(0, 50, 75, 0.04),
+      3px 31px 80px 0px rgba(0, 50, 75, 0.06);
+
+    &_img {
+      width: 60px;
+      height: 60px;
+    }
+
+    &_text {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 23.8px;
+      color: var(--page-color-black);
+      letter-spacing: 0.3px;
+    }
+
+    &_link {
+      color: var(--page-color-ligth-blue);
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--page-color-red);
+      }
+
+      &:active {
+        color: var(--page-color-link);
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 960px) {
+//   .advantages {
+//     margin: 50px 0px;
+//   }
+
+//   .advantages__wrapper {
+//     margin-top: 30px;
+//   }
+
+//   .advantages__card {
+//     flex-direction: column;
+
+//     &_img {
+//       align-self: center;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 767px) {
+//   .advantages {
+//     margin: 36px 0px;
+
+//     &__title {
+//       font-size: 28px;
+//       line-height: 32px;
+//     }
+
+//     &__card {
+//       padding: 24px 20px;
+//       width: 100%;
+//       flex-basis: 100%;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 576px) {
+//   .advantages__title {
+//     font-size: 20px;
+//     line-height: 24px;
+//   }
+
+//   .advantages__text {
+//     font-size: 18px;
+//     line-height: 23.8px;
+//   }
+
+//   .advantages__wrapper {
+//     margin-top: 16px;
+//   }
+
+//   .advantages__card_title {
+//     font-size: 16px;
+//     line-height: 21.6px;
+//   }
+// }

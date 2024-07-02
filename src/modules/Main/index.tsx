@@ -4,6 +4,10 @@ import Footer from 'components/Footer';
 import Loader from 'components/Loader';
 import Error from 'components/Error';
 import Alert from 'components/Alert';
+import Information from './components/Information';
+import Knowledge from './components/Knowledge';
+import Reference from './components/Reference';
+import Mentor from './components/Mentor';
 import styles from './styles.module.scss';
 import { ResponseData } from 'types';
 
@@ -56,7 +60,12 @@ const Main = () => {
   return (
     <>
       <Header />
-      <main className={styles.main}>asdasdasdsadsa</main>
+      <main className={styles.main}>
+        <Information />
+        <Knowledge />
+        <Reference />
+        <Mentor />
+      </main>
       <Footer />
       <Alert />
     </>
