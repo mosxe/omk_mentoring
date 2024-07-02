@@ -1,0 +1,54 @@
+﻿body {
+  margin: 0;
+}
+
+.error-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__code {
+    font-size: 160px;
+    margin: 8px 0px;
+    font-weight: 700;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & svg {
+      width: 35px;
+      color: rgb(239, 68, 68);
+      stroke: rgb(239, 68, 68);
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .error-page__code {
+    font-size: 100px;
+  }
+
+  .error-page__content svg {
+    width: 25px;
+  }
+
+  .error-page__text {
+    font-size: 18px;
+  }
+}
