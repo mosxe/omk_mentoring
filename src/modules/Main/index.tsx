@@ -8,6 +8,11 @@ import Information from './components/Information';
 import Knowledge from './components/Knowledge';
 import Reference from './components/Reference';
 import Mentor from './components/Mentor';
+import Competences from './components/Competences';
+import Support from './components/Support';
+import Profitable from './components/Profitable';
+import Starting from './components/Starting';
+import Contacts from './components/Contacts';
 import styles from './styles.module.scss';
 import { ResponseData } from 'types';
 
@@ -65,6 +70,11 @@ const Main = () => {
         <Knowledge />
         <Reference />
         <Mentor />
+        <Competences />
+        <Support />
+        <Profitable />
+        <Starting />
+        <Contacts />
       </main>
       <Footer />
       <Alert />

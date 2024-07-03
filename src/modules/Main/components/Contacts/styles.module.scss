@@ -1,0 +1,163 @@
+﻿.contacts {
+  margin-bottom: 50px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px;
+    background-color: var(--page-color-gray);
+    border-radius: 10px;
+  }
+
+  &__title {
+    margin: 0px !important;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44px;
+    color: var(--page-color-dark-blue);
+
+    &_red {
+      color: var(--page-color-red);
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding-left: 100px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 66px;
+    align-items: center;
+  }
+
+  &__desc {
+    max-width: 670px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    color: var(--page-color-black);
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 272px;
+    gap: 10px;
+
+    &_center {
+      align-items: center;
+      padding-right: 80px;
+    }
+  }
+
+  &__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23.4px;
+    text-align: left;
+    color: var(--page-color-black);
+  }
+
+  &__subtext {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    color: var(--page-color-link);
+    letter-spacing: 0.3px;
+  }
+
+  &__email {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    text-align: left;
+    color: var(--page-color-red);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--page-color-black);
+    }
+
+    &:active {
+      color: var(--page-color-dark-blue);
+    }
+  }
+
+  &__cont {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    text-align: left;
+    color: var(--page-color-red);
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .contacts {
+    margin: 50px 0px;
+  }
+
+  .contacts__wrapper {
+    padding: 40px;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .contacts {
+    margin: 36px 0px;
+
+    &__title {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    &__wrapper {
+      padding: 36px 28px;
+    }
+
+    &__container {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    &__col {
+      flex-basis: 100%;
+    }
+
+    &__img {
+      align-self: center;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .contacts__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .contacts__wrapper {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .contacts__container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

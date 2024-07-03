@@ -1,0 +1,147 @@
+﻿.support {
+  margin-bottom: 120px;
+
+  &__wrapper {
+    padding: 80px;
+    background-color: var(--page-color-black);
+    border-radius: 10px;
+  }
+
+  &__title {
+    margin: 0px 0px 40px 0px !important;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44px;
+    color: var(--page-color-white);
+    max-width: 800px;
+
+    &_red {
+      color: var(--page-color-red);
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 50px;
+  }
+
+  &__box {
+    display: flex;
+    gap: 30px;
+    padding: 20px 30px 20px 0px;
+
+    &_m {
+      margin: 30px 0px 20px 0px;
+    }
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.76px;
+    color: var(--page-color-gray);
+    letter-spacing: 0.3px;
+
+    &_b {
+      font-weight: 700;
+      color: var(--page-color-white);
+      line-height: 23.4px;
+    }
+  }
+
+  &__link {
+    color: var(--page-color-ligth-blue);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--page-color-red);
+    }
+
+    &:active {
+      color: var(--page-color-link);
+    }
+  }
+}
+
+// @media screen and (max-width: 960px) {
+//   .support {
+//     margin: 50px 0px;
+//   }
+// }
+
+// @media screen and (max-width: 767px) {
+//   .support {
+//     margin: 36px 0px;
+
+//     &__title {
+//       font-size: 28px;
+//       line-height: 32px;
+//       margin-bottom: 32px !important;
+//     }
+
+//     &__wrapper {
+//       padding: 36px 28px;
+//     }
+
+//     &__row {
+//       gap: 30px;
+//     }
+
+//     &__card {
+//       padding: 20px 10px;
+//       align-items: center;
+
+//       &_title {
+//         text-align: center;
+//       }
+
+//       &_text {
+//         text-align: center;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 576px) {
+//   .support__title {
+//     font-size: 20px;
+//     line-height: 24px;
+//     margin-bottom: 24px !important;
+//   }
+
+//   .support__wrapper {
+//     padding: 24px 16px;
+//   }
+
+//   .support__row {
+//     flex-direction: column;
+//     gap: 16px;
+//   }
+
+//   .support__card {
+//     padding: 16px 0px;
+
+//     &_title {
+//       font-size: 16px;
+//       line-height: 21.6px;
+//     }
+
+//     &_text {
+//       font-size: 16px;
+//       line-height: 20.8px;
+//     }
+//   }
+// }
