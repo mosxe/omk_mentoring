@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error from 'components/Error';
 import MainPage from './pages/Main';
 import ErrorPage from './pages/Error';
+import { register } from 'swiper/element/bundle';
 
 import './index.css';
+
+register();
 
 const router = createBrowserRouter([
   {
