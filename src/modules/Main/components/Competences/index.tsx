@@ -3,12 +3,18 @@
 const Competences = () => {
   const link = '12312';
 
-  const handleClick = () => {
+  const handleClick = (isProgram: boolean) => {
     // const linkFile = getLinkFile(link);
-    const linkFile = '';
+    let linkName = 'Корпоративные компетенции наставника';
+    let linkFile = '12312';
+    if (isProgram) {
+      linkName = 'Программа развития наставников';
+      linkFile = '33333';
+    }
+
     const a = document.createElement('a');
     a.href = linkFile;
-    a.download = 'Корпоративные компетенции наставника';
+    a.download = linkName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -28,7 +34,7 @@ const Competences = () => {
             <button
               className={styles.competences__btn}
               type='button'
-              onClick={handleClick}
+              onClick={() => handleClick()}
             >
               <span>Скачать</span>
               <svg
@@ -299,7 +305,10 @@ const Competences = () => {
           Освоить или прокачать компетенции «Ориентация на продуктивное
           взаимодействие» и «Передача знаний и опыта» наставникам помогает
           корпоративный университет в{' '}
-          <span className={styles.competences__link}>
+          <span
+            className={styles.competences__link}
+            onClick={() => handleClick(true)}
+          >
             программе развития наставников
           </span>
         </div>

@@ -3,7 +3,11 @@ import Image2 from 'assets/svg/Knowledge/icon_2.svg';
 import Image3 from 'assets/svg/Knowledge/icon_3.svg';
 import styles from './styles.module.scss';
 
-const Knowledge = () => {
+type Props = {
+  onClickSection: (section: string) => void;
+};
+
+const Knowledge = ({ onClickSection }: Props) => {
   return (
     <section className={styles.knowledge}>
       <h2 className={styles.knowledge__title}>
@@ -17,7 +21,10 @@ const Knowledge = () => {
             src={Image1}
             alt='Картинка'
           />
-          <div className={styles.knowledge__card_text}>
+          <div
+            className={styles.knowledge__card_text}
+            onClick={() => onClickSection('mentor')}
+          >
             Кто может{' '}
             <span className={styles.knowledge__card_link}>
               стать наставником
@@ -31,7 +38,13 @@ const Knowledge = () => {
             alt='Картинка'
           />
           <div className={styles.knowledge__card_text}>
-            Какая <span className={styles.knowledge__card_link}>поддержка</span>{' '}
+            Какая{' '}
+            <span
+              className={styles.knowledge__card_link}
+              onClick={() => onClickSection('support')}
+            >
+              поддержка
+            </span>{' '}
             и инструменты имеются для наставников
           </div>
         </div>
@@ -43,7 +56,12 @@ const Knowledge = () => {
           />
           <div className={styles.knowledge__card_text}>
             Почему быть наставником{' '}
-            <span className={styles.knowledge__card_link}>выгодно</span>
+            <span
+              className={styles.knowledge__card_link}
+              onClick={() => onClickSection('profitable')}
+            >
+              выгодно
+            </span>
           </div>
         </div>
       </div>

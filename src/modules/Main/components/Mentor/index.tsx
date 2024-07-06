@@ -1,9 +1,22 @@
-﻿import Image from 'assets/images/Mentor/mentor.jpg';
+﻿import { forwardRef } from 'react';
+import Image from 'assets/images/Mentor/mentor.jpg';
+import { getLinkFile } from 'helpers';
 import styles from './styles.module.scss';
 
-const Mentor = () => {
+const Mentor = forwardRef<HTMLDivElement>((_, ref) => {
+  const link = '12312';
+  const handleClick = () => {
+    const linkFile = getLinkFile(link);
+    const a = document.createElement('a');
+    a.href = linkFile;
+    a.download = 'Дополнительные компетенции';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   return (
-    <section className={styles.mentor}>
+    <section className={styles.mentor} ref={ref}>
       <div className={styles.mentor__wrapper}>
         <div className={styles.mentor__content}>
           <h2 className={styles.mentor__title}>
@@ -32,7 +45,9 @@ const Mentor = () => {
             </ul>
             <p className={styles.mentor__text}>
               Помимо этого, наставник должен обладать дополнительными{' '}
-              <span className={styles.mentor__link}>компетенциям</span>
+              <span className={styles.mentor__link} onClick={handleClick}>
+                компетенциям
+              </span>
             </p>
           </div>
         </div>
@@ -42,6 +57,6 @@ const Mentor = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Mentor;

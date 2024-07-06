@@ -1,14 +1,13 @@
-﻿import { useState } from 'react';
+﻿import { useState, forwardRef } from 'react';
 import Modal from 'components/Modal';
 import ModalContent from './components/ModalContent';
 import News from './components/News';
-
 import Image1 from 'assets/svg/Support/sup_1.svg';
 import Image2 from 'assets/svg/Support/sup_2.svg';
 import Image3 from 'assets/svg/Support/sup_3.svg';
 import styles from './styles.module.scss';
 
-const Support = () => {
+const Support = forwardRef<HTMLDivElement>((_, ref) => {
   const [isShowModal, setShowModal] = useState<boolean>(false);
 
   const onShowModalHandler = () => {
@@ -17,7 +16,7 @@ const Support = () => {
 
   return (
     <>
-      <section className={styles.support}>
+      <section className={styles.support} ref={ref}>
         <div className={styles.support__wrapper}>
           <h2 className={styles.support__title}>
             <span className={styles.support__title_red}>
@@ -26,7 +25,7 @@ const Support = () => {
             со стороны корпоративного университета
           </h2>
           <div className={styles.support__box}>
-            <img src={Image1} alt='Картинка' />
+            <img className={styles.support__img} src={Image1} alt='Картинка' />
             <div className={styles.support__col}>
               <div className={styles.support__text_b}>Обучение</div>
               <div className={styles.support__text}>
@@ -44,7 +43,7 @@ const Support = () => {
             </div>
           </div>
           <div className={`${styles.support__box} ${styles.support__box_m}`}>
-            <img src={Image2} alt='Картинка' />
+            <img className={styles.support__img} src={Image2} alt='Картинка' />
             <div className={styles.support__col}>
               <div className={styles.support__text_b}>
                 Профессиональное сообщество
@@ -58,7 +57,7 @@ const Support = () => {
             </div>
           </div>
           <div className={styles.support__box}>
-            <img src={Image3} alt='Картинка' />
+            <img className={styles.support__img} src={Image3} alt='Картинка' />
             <div className={styles.support__col}>
               <div className={styles.support__text_b}>Доплаты</div>
               <div className={styles.support__text}>
@@ -80,6 +79,6 @@ const Support = () => {
       </Modal>
     </>
   );
-};
+});
 
 export default Support;

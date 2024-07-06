@@ -1,7 +1,7 @@
 ﻿.news {
-  max-width: 920px;
   width: 100%;
   margin-top: 20px;
+  padding-right: 130px;
 
   &__wrapper {
     position: relative;
@@ -46,6 +46,11 @@
     border-radius: 50%;
     transition: background-color 0.3s ease;
 
+    & svg {
+      width: 9px;
+      height: 18px;
+    }
+
     &:hover {
       background-color: var(--page-color-white) !important;
 
@@ -64,45 +69,17 @@
       }
     }
 
-    &--disabled {
-      cursor: default;
-      background-color: var(--page-color-link) !important;
-      border-color: var(--page-color-link) !important;
-
-      & svg path {
-        stroke: var(--page-color-light-gray) !important;
-        fill: var(--page-color-light-gray) !important;
-        transition: all 0.3s ease;
-      }
-
-      &:hover {
-        background-color: var(--page-color-white) !important;
-
-        & svg path {
-          stroke: rgba(26, 34, 44, 1) !important;
-          transition: all 0.3s ease;
-        }
-      }
-
-      &:active {
-        background-color: var(--page-color-dark-blue) !important;
-
-        & svg path {
-          stroke: var(--page-color-white) !important;
-          transition: all 0.3s ease;
-        }
-      }
-    }
-
     &--prev {
       top: 50%;
-      left: 0;
+      left: -50px;
+      padding-right: 10px;
     }
 
     &--next {
       top: 50%;
-      right: 0;
+      right: -30px;
       transform: translateY(-50%);
+      padding-left: 10px;
     }
   }
 }
@@ -126,7 +103,7 @@
 
   &__img {
     width: 100%;
-    height: 100%;
+    height: 130px;
 
     & img {
       width: 100%;

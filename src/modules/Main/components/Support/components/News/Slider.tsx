@@ -1,6 +1,6 @@
 ﻿import styles from './styles.module.scss';
 
-const Slider = ({ id }: { id: number }) => {
+const Slider = () => {
   return (
     <div className={styles.slider}>
       <div className={styles.slider__wrapper}>
@@ -26,9 +26,9 @@ const Slider = ({ id }: { id: number }) => {
             <path
               d='M0 5H30L20.5932 0'
               stroke='#E41910'
-              stroke-width='0.938889'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeWidth='0.938889'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </button>

@@ -22,7 +22,8 @@
       "components/*": ["components/*"],
       "modules/*": ["modules/*"],
       "types/*": ["types/*"],
-      "hooks/*": ["hooks/*"]
+      "hooks/*": ["hooks/*"],
+      "helpers/*": ["helpers/*"]
     },
     /* Linting */
     "strict": true,

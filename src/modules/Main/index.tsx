@@ -17,6 +17,55 @@ import styles from './styles.module.scss';
 import { ResponseData } from 'types';
 
 const Main = () => {
+  const startingRef = useRef<HTMLDivElement>(null);
+  const supportRef = useRef<HTMLDivElement>(null);
+  const mentorRef = useRef<HTMLDivElement>(null);
+  const profitableRef = useRef<HTMLDivElement>(null);
+
+  const handleClickSection = useCallback((section: string) => {
+    const headerHeight = 64;
+    let scrollPosY = null;
+
+    switch (section) {
+      case 'starting':
+        scrollPosY = startingRef.current
+          ? startingRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight
+          : null;
+        break;
+      case 'mentor':
+        scrollPosY = mentorRef.current
+          ? mentorRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight
+          : null;
+        break;
+      case 'support':
+        scrollPosY = supportRef.current
+          ? supportRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight
+          : null;
+        break;
+      case 'profitable':
+        scrollPosY = profitableRef.current
+          ? profitableRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight
+          : null;
+        break;
+      default:
+        break;
+    }
+    if (scrollPosY !== null) {
+      window.scrollTo({
+        top: scrollPosY,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   // const [data, setData] = useState<ResponseData>(initialData);
   // const [isLoading, setLoading] = useState<boolean>(true);
   // const [isError, setError] = useState<boolean>(false);
@@ -66,14 +115,14 @@ const Main = () => {
     <>
       <Header />
       <main className={styles.main}>
-        <Information />
-        <Knowledge />
+        <Information onClickSection={handleClickSection} />
+        <Knowledge onClickSection={handleClickSection} />
         <Reference />
-        <Mentor />
+        <Mentor ref={mentorRef} />
         <Competences />
-        <Support />
-        <Profitable />
-        <Starting />
+        <Support ref={supportRef} />
+        <Profitable ref={profitableRef} />
+        <Starting ref={startingRef} />
         <Contacts />
       </main>
       <Footer />

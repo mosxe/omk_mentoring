@@ -21,7 +21,8 @@ export default defineConfig(({ mode }: ViteConfig) => {
         components: '/src/components',
         modules: '/src/modules',
         types: '/src/types',
-        hooks: '/src/hooks'
+        hooks: '/src/hooks',
+        helpers: '/src/helpers'
       }
     },
     plugins: [react()],

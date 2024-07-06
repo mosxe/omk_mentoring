@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useState, forwardRef } from 'react';
 import Popap from 'components/Popap';
 import Form from './components/Form';
 // import PopapAlert from '../Program/PopapAlert';
@@ -10,7 +10,7 @@ import Image3 from 'assets/svg/Starting/number_3.svg';
 // import { getFetchForm, initialForm } from '../../utils';
 import styles from './styles.module.scss';
 
-const Starting = () => {
+const Starting = forwardRef<HTMLDivElement>((_, ref) => {
   // const [data, setData] = useState<ResponseForm>(initialForm);
   // const [isLoading, setLoading] = useState<boolean>(true);
   // const [isError, setError] = useState<boolean>(false);
@@ -53,7 +53,7 @@ const Starting = () => {
 
   return (
     <>
-      <section className={styles.starting}>
+      <section className={styles.starting} ref={ref}>
         <div className={styles.starting__wrapper}>
           <h2 className={styles.starting__title}>
             <span className={styles.starting__title_red}>Начните</span> свой
@@ -146,6 +146,6 @@ const Starting = () => {
       </Popap> */}
     </>
   );
-};
+});
 
 export default Starting;

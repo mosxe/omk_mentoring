@@ -4,7 +4,11 @@ import Image3 from 'assets/svg/Information/icon_3.svg';
 import Image4 from 'assets/svg/Information/icon_4.svg';
 import styles from './styles.module.scss';
 
-const Information = () => {
+type Props = {
+  onClickSection: (section: string) => void;
+};
+
+const Information = ({ onClickSection }: Props) => {
   return (
     <section className={styles.information}>
       <h2 className={styles.information__title}>
@@ -41,7 +45,10 @@ const Information = () => {
 
           <div className={styles.information__card_text}>
             Сотрудникам, которые хотят{' '}
-            <span className={styles.information__card_link}>
+            <span
+              className={styles.information__card_link}
+              onClick={() => onClickSection('starting')}
+            >
               попробовать себя в роли наставника
             </span>
           </div>
