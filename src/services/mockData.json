@@ -1,0 +1,231 @@
+﻿{
+  "fetchData": {
+    "data": {
+      "programs": [
+        {
+          "title_program": "",
+          "is_diagnostics": "",
+          "is_training": "true",
+          "is_development_plan": "",
+          "is_certification": "",
+          "title_desc": "",
+          "is_button_link": "true",
+          "is_button_file": "",
+          "is_button_message": "",
+          "title_settings": "",
+          "link_page": "/main",
+          "object_file_id": "",
+          "notification_type_id": "",
+          "button_name": "Записаться на тренинг"
+        },
+        {
+          "title_program": "",
+          "is_diagnostics": "",
+          "is_training": "",
+          "is_development_plan": "",
+          "is_certification": "true",
+          "title_desc": "",
+          "is_button_link": "",
+          "is_button_file": "",
+          "is_button_message": "true",
+          "title_settings": "",
+          "link_page": "",
+          "object_file_id": "",
+          "notification_type_id": "7042092618212921995",
+          "button_name": "Записаться на сертификацию"
+        },
+        {
+          "title_program": "",
+          "is_diagnostics": "",
+          "is_training": "",
+          "is_development_plan": "true",
+          "is_certification": "",
+          "title_desc": "",
+          "is_button_link": "",
+          "is_button_file": "true",
+          "is_button_message": "",
+          "title_settings": "",
+          "link_page": "",
+          "object_file_id": "7042721192704733468",
+          "notification_type_id": "",
+          "button_name": "Скачать план развития"
+        },
+        {
+          "title_program": "",
+          "is_diagnostics": "true",
+          "is_training": "false",
+          "is_development_plan": "",
+          "is_certification": "",
+          "title_desc": "",
+          "is_button_link": "false",
+          "is_button_file": "false",
+          "is_button_message": "true",
+          "title_settings": "",
+          "link_page": "",
+          "object_file_id": "",
+          "notification_type_id": "7042432846304095272",
+          "button_name": "Записаться на диагностику"
+        }
+      ],
+      "materials": [
+        {
+          "type": "материал для скачивания",
+          "title": "Эмоциональная смелость",
+          "desc": "Питер Брегман. Манн, Иванов, 2018",
+          "is_download": "true",
+          "link": "http://localhost/download_file.html?file_id=6972734825693151124"
+        },
+        {
+          "type": "издательство АЛЬПИНА",
+          "title": "Эмоциональная смелость",
+          "desc": "Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018",
+          "is_download": "",
+          "link": "https://ya.ru"
+        },
+        {
+          "type": "материал для скачивания",
+          "title": "Эмоциональная смелость Эмоциональная смелость Эмоциональная смелость Эмоциональная смелость",
+          "desc": "Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018",
+          "is_download": "true",
+          "link": "http://localhost/download_file.html?file_id=7179197303563902064"
+        }
+      ],
+      "events": [
+        {
+          "id": "1111",
+          "name": "Тренинг для тренеров",
+          "start_date": "<div><span class=\"text-m\">Группа 1</span><span class=\"text-s\">20, 27 февраля</span></div>\r\n<div><span class=\"text-m\">Группа 1</span><span class=\"text-s\">20, 27 февраля</span></div>",
+          "time": "09:00-17:00",
+          "photo": "http://localhost/download_file.html?file_id=7165802453038623607",
+          "fullname": "Ирина Гольцова",
+          "position_name": "Ведущий тренер",
+          "desc": "<ul>\r\n<li>asdasdadasd</li>\r\n<li>asdasdadasd22 222</li>\r\n<li>asdasdadasd 333333</li>\r\n</ul>",
+          "link": "ссылка",
+          "title": "Тестовое мероприятие",
+          "start_date_name": "Группа 1",
+          "start_date_desc": "21 сентярбрпя",
+          "time_name": "09-10",
+          "time_desc": "8 часов",
+          "start_time": "<div><span class=\"text-m\">09:00 - 17:00</span><span class=\"text-s\">3 дня по 8 часов</span></div>"
+        }
+      ],
+      "contacts": {
+        "photo": "http://localhost/download_file.html?file_id=7165802453038623607",
+        "fullname": "Петров Иван",
+        "position_name": "Старший аналитик",
+        "email": "@testgggggg.ru"
+      },
+      "link_model_competence": "http://localhost/download_file.html?file_id=7042721113247233466",
+      "link_events": "http://localhost/download_file.html?file_id=6972734825693151124",
+      "model_competence_video": ""
+    },
+    "isError": false,
+    "errorMessage": ""
+  },
+  "formMentor": {
+    "data": [
+      {
+        "id": "90110373",
+        "title": "Ф.И.О. сотрудника",
+        "type": "link_to_database_object",
+        "view": "1",
+        "entries": []
+      },
+      {
+        "id": "87099427",
+        "title": "Укажите Ф.И.О. своего непосредственного руководителя",
+        "type": "link_to_database_object",
+        "view": "2",
+        "entries": []
+      },
+      {
+        "id": "24637236",
+        "title": "Готовы ли прикладывать усилия к обучению других, передавать знания, делиться опытом?",
+        "type": "choice",
+        "view": "",
+        "entries": [
+          { "id": "51020247", "title": "Да" },
+          { "id": "66536271", "title": "Нет" }
+        ]
+      },
+      {
+        "id": "86360997",
+        "title": "Вы были ранее наставником?",
+        "type": "choice",
+        "view": "",
+        "entries": [
+          { "id": "22174045", "title": "Да" },
+          { "id": "11899251", "title": "Нет" }
+        ]
+      },
+      {
+        "id": "57598479",
+        "title": "По какой профессии Вы хотите быть наставником (можно указать несколько):",
+        "type": "combo",
+        "view": "3",
+        "entries": []
+      },
+      {
+        "id": "86658449",
+        "title": "Готовы ли Вы пройти обучение для Наставников (тренинг «Модуль 1. Технология наставничества»)?",
+        "type": "choice",
+        "view": "",
+        "entries": [
+          { "id": "81557687", "title": "Да" },
+          { "id": "58552157", "title": "Нет" }
+        ]
+      },
+      {
+        "id": "78643652",
+        "title": "Укажите Ваш контактный номер телефона",
+        "type": "text",
+        "view": "4",
+        "entries": []
+      },
+      {
+        "id": "78643652222",
+        "title": "Когда в последний раз Вас привлекали в качестве наставника?",
+        "type": "select",
+        "view": "5",
+        "entries": []
+      }
+    ],
+    "person": {
+      "middlename": "Петров",
+      "firstname": "Кирилл",
+      "lastname": "Владимирович",
+      "number": "04040040404",
+      "position": "Начальник цеха",
+      "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+    },
+    "isError": false,
+    "errorMessage": ""
+  },
+  "searchCollabators": {
+    "data": [
+      {
+        "id": "1231232131312",
+        "name": "Алексеев К.В.",
+        "tab_number": "123123",
+        "position": "Директор по персонала банка",
+        "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+      },
+      {
+        "id": "222",
+        "name": "Петров К.В.",
+        "tab_number": "55555",
+        "position": "Директор по персонала банка",
+        "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+      },
+      {
+        "id": "33333",
+        "name": "Иванов К.В.",
+        "tab_number": "66666",
+        "position": "Директор по персонала банка",
+        "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+      }
+    ],
+    "isError": false,
+    "errorMessage": ""
+  }
+}

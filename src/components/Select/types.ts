@@ -1,0 +1,37 @@
+﻿import { ReactNode } from 'react';
+
+export type Option = {
+  value: string | number;
+  label: string;
+};
+export type OptionType = Option | [] | null;
+export type OptionsType = Array<OptionType>;
+export type OptionChange = OptionType | OptionType[] | readonly OptionType[];
+
+export type SelectProps = {
+  options?: OptionsType | any;
+  id?: string;
+  label: string;
+  placeholder?: string;
+  tooltip?: ReactNode;
+  onDropdownIndicator?: () => void;
+  value?: Array<OptionType>;
+  onChange?: (value: OptionChange) => void;
+  noOptionsMessage?: string;
+  noOptionsMessageDefault?: string;
+  isLoading?: boolean;
+  isRequired?: boolean;
+  isError?: boolean;
+  isAddButton?: boolean;
+  isSearchable?: boolean;
+  isDisabled?: boolean;
+  defaultValue?: OptionType | OptionsType;
+  onFocus?: () => void;
+  isClearable?: boolean;
+  isArrow?: boolean;
+  innerRef?: any;
+};
+
+export type optionsMessageProps = {
+  inputValue: string;
+};

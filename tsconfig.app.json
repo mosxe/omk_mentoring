@@ -23,7 +23,8 @@
       "modules/*": ["modules/*"],
       "types/*": ["types/*"],
       "hooks/*": ["hooks/*"],
-      "helpers/*": ["helpers/*"]
+      "helpers/*": ["helpers/*"],
+      "services/*": ["services/*"]
     },
     /* Linting */
     "strict": true,

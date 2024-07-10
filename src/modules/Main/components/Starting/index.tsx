@@ -1,55 +1,56 @@
 ﻿import { useState, forwardRef } from 'react';
 import Popap from 'components/Popap';
-import Form from './components/Form';
+import Form from 'components/Form';
 // import PopapAlert from '../Program/PopapAlert';
 import { toast } from 'react-toastify';
 import Image1 from 'assets/svg/Starting/number_1.svg';
 import Image2 from 'assets/svg/Starting/number_2.svg';
 import Image3 from 'assets/svg/Starting/number_3.svg';
-// import { ResponseForm } from 'types';
-// import { getFetchForm, initialForm } from '../../utils';
+import { ResponseForm } from 'types';
+import { getFormMentor } from 'services';
+import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
 const Starting = forwardRef<HTMLDivElement>((_, ref) => {
-  // const [data, setData] = useState<ResponseForm>(initialForm);
-  // const [isLoading, setLoading] = useState<boolean>(true);
-  // const [isError, setError] = useState<boolean>(false);
-  // const [isShowPopap, setShowPopap] = useState<boolean>(false);
-  // const [isShowAlert, setShowAlert] = useState<boolean>(false);
+  const [data, setData] = useState<ResponseForm>(initialForm);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isError, setError] = useState<boolean>(false);
+  const [isShowPopap, setShowPopap] = useState<boolean>(false);
+  const [isShowAlert, setShowAlert] = useState<boolean>(false);
 
-  // const onShowPopap = () => {
-  //   setShowPopap(!isShowPopap);
-  // };
+  const onShowPopap = () => {
+    setShowPopap(!isShowPopap);
+  };
 
-  // const handleClick = () => {
-  //   setShowAlert(false);
-  //   setShowPopap(!isShowPopap);
-  //   if (!data.data.length) {
-  //     setLoading(true);
-  //     getFetchForm()
-  //       .then((res) => {
-  //         if (res.isError) {
-  //           setError(true);
-  //           return;
-  //         }
-  //         setData(res);
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //         setError(true);
-  //       })
-  //       .finally(() => setLoading(false));
-  //   }
-  // };
+  const handleClick = () => {
+    setShowAlert(false);
+    setShowPopap(!isShowPopap);
+    if (!data.data.length) {
+      setLoading(true);
+      getFormMentor()
+        .then((res) => {
+          if (res.isError) {
+            setError(true);
+            return;
+          }
+          setData(res);
+        })
+        .catch((e) => {
+          console.log(e);
+          setError(true);
+        })
+        .finally(() => setLoading(false));
+    }
+  };
 
-  // const onCloseForm = (isErrorFetch: boolean) => {
-  //   if (isErrorFetch) {
-  //     setShowPopap(false);
-  //     toast('Произошла ошибка');
-  //   } else {
-  //     setShowAlert(true);
-  //   }
-  // };
+  const onCloseForm = (isErrorFetch: boolean) => {
+    if (isErrorFetch) {
+      setShowPopap(false);
+      toast('Произошла ошибка');
+    } else {
+      setShowAlert(true);
+    }
+  };
 
   return (
     <>
@@ -73,13 +74,13 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
                 <div
                   className={`${styles.starting__card_text} ${styles['starting__card_text-center']}`}
                 >
-                  Нажмите на кнопку, заполните и отправьте анкету кураторуу
+                  Нажмите на кнопку, заполните и отправьте анкету куратору
                 </div>
               </div>
               <button
                 className={styles.starting__card_btn}
                 type='button'
-                // onClick={handleClick}
+                onClick={handleClick}
               >
                 Заполнить анкету
               </button>
@@ -128,22 +129,19 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
         </div>
       </section>
-      {/* <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
+      <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
         {!isShowAlert ? (
           <Form
+            title='Хочу стать наставником'
             isLoading={isLoading}
             isError={isError}
             data={data}
             onClose={onCloseForm}
           />
         ) : (
-          <PopapAlert
-            title='Спасибо за заполнение формы!</br> Ваши ответы отправлены!'
-            text='В течение 3 рабочих дней с Вами свяжется куратор проекта, не пропустите письмо по электронной почте.'
-            isImageLarge
-          />
+          <span>asdasdsadasda</span>
         )}
-      </Popap> */}
+      </Popap>
     </>
   );
 });
