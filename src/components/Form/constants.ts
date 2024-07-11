@@ -1,7 +1,7 @@
 ﻿export const TYPES = [
   {
     id: '1',
-    name: 'Указывается ФИО сотрудника'
+    name: 'Автозаполнение ФИО сотрудника'
   },
   {
     id: '2',
@@ -71,3 +71,5 @@ export const MONTHS = [
     label: 'декабрь'
   }
 ];
+
+export const MAX_COUNT_PROFESSIONS = 8;

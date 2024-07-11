@@ -2,12 +2,6 @@
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import Header from './components/Header';
 import Item from './components/Item';
-import Question from './Question';
-import QuestionInput from './Input';
-import QuestionSelect from './SelectQuestion';
-import AsyncSelect from 'components/Select/AsyncSelect';
-import ItemPerson from './components/ItemPerson';
-import ItemSelect from './components/ItemSelect';
 import Loader from 'components/Loader';
 import { LoaderContent } from 'components/Loader';
 import Error from 'components/Error';
@@ -143,31 +137,9 @@ const Form = ({
             Уважаемый коллега, просим Вас ответить на {data.data.length}{' '}
             вопросов анкеты
           </div>
-          {/* <ItemPerson /> */}
-          {/* <ItemSelect /> */}
-          {/* <InputTest type='tel' /> */}
           {data.data.map((item, index) => (
             <Item data={item} index={index} key={index} />
           ))}
-          {/* <AsyncSelect
-            id={`competency_profile_adad`}
-            label='Профиль компетенций'
-            // innerRef={ref}
-            loadOptions={getCompetenceProfiles}
-            // value={value}
-            // onChange={(selected) => {
-            //   const { label } = selected as Option;
-            //   onChange(selected);
-            //   setValue(`competence_profile.${index}.planned_level`, []);
-            //   getLevels(profileLevels, label);
-            // }}
-            noOptionsMessage={noOptionsMessage}
-            isArrow={false}
-          /> */}
-          {/* <QuestionInput /> */}
-          {/* <QuestionInput isRound={true} /> */}
-          {/* <QuestionSelect /> */}
-          {/* <InputPhone /> */}
           <button
             type='submit'
             className={styles.form__btn}

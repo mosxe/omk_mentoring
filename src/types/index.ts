@@ -83,34 +83,9 @@ export interface ResponseForm extends Error {
   };
 }
 
-// export interface ResponseData extends Error {
-//   data: {
-//     programs: Program[];
-//     materials: Material[];
-//     events: Event[];
-//     contacts: Contact;
-//     link_model_competence: string;
-//     link_events: string;
-//     model_competence_video: string;
-//   };
-// }
-
-// export interface FormData {
-//   id: string;
-//   entries: Record<string, string | boolean>[];
-//   comments: string;
-// }
-
-// export type Type =
-//   | 'diagnostics'
-//   | 'training'
-//   | 'certification'
-//   | 'development_plan';
-
-// export interface Request {
-//   type: Type;
-//   text: string;
-//   notification_id: string;
-// }
-
-// export type ActionProgram = 'file' | 'link' | 'message';
+export interface ResponseProfessions extends Error {
+  data: {
+    value: string;
+    label: string;
+  }[];
+}

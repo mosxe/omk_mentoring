@@ -23,7 +23,7 @@
   --page-color-dark-blue-opacity8: rgba(0, 50, 75, 0.8);
   --page-color-ligth-blue: rgba(0, 124, 255, 1);
   --page-color-gray: rgba(208, 212, 217, 1);
-  --page-color-link: rgba(141, 142, 145, 1);
+  --page-color-link: rgb(141, 142, 145);
   --page-color-purple: rgba(122, 47, 150, 1);
   --page-color-dark-gray: rgba(135, 138, 142, 1);
   --page-color-light-purple: rgba(231, 236, 243, 1);

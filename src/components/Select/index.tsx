@@ -55,6 +55,7 @@ const Select = (props: SelectProps): JSX.Element => {
         options={options}
         ref={innerRef}
         name={id}
+        menuPlacement='auto'
         isClearable={isClearable}
         defaultValue={defaultValue}
         noOptionsMessage={({ inputValue }) =>

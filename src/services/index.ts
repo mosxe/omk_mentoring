@@ -2,9 +2,14 @@
 import {
   ResponseSearchCollaborators,
   ResponseForm,
+  ResponseProfessions,
   Error as IError
 } from 'types';
-import { initialSearchCollaborators, initialForm } from './constants';
+import {
+  initialSearchCollaborators,
+  initialProfessions,
+  initialForm
+} from './constants';
 
 const getUrl = (action: string, ...params) => {
   const urlParams = new URLSearchParams({
@@ -70,6 +75,32 @@ export const getFormMentor = async (): Promise<ResponseForm> => {
   } catch (e) {
     initialForm.isError = true;
     return initialForm;
+  }
+};
+
+export const getProfessions = async (
+  value: string
+): Promise<ResponseProfessions> => {
+  const API_URL = getUrl('getProfessions', { search: value });
+  try {
+    if (import.meta.env.DEV) {
+      const results = (await mockFetchData(
+        data.getProfessions
+      )) as ResponseProfessions;
+      return results;
+    }
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (e) {
+    initialProfessions.isError = true;
+    return initialProfessions;
   }
 };
 
