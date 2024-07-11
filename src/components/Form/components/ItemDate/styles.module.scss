@@ -1,1 +1,23 @@
-﻿
+﻿.item-date {
+  display: flex;
+  gap: 40px;
+
+  &__row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.6px;
+    text-align: left;
+    color: var(--page-color-dark-gray);
+    flex-shrink: 0;
+  }
+
+  &__value {
+    min-width: 130px;
+  }
+}

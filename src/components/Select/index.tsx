@@ -1,5 +1,4 @@
 ﻿import ReactSelect, { components, DropdownIndicatorProps } from 'react-select';
-import ReactSelectChips from './ChipsSelect';
 import Loader from './Loader';
 import styles from './styles.module.scss';
 import { OptionType, SelectProps } from './types';
@@ -11,22 +10,17 @@ const Select = (props: SelectProps): JSX.Element => {
     options,
     placeholder,
     label,
-    tooltip,
     onChange,
-    isRequired,
     noOptionsMessage = 'Данные отсутствуют',
     noOptionsMessageDefault = 'Не найдено',
     isLoading = false,
     value,
-    isError = false,
-    onDropdownIndicator,
-    isAddButton = false,
-    isSearchable = true,
     isDisabled = false,
     defaultValue = [],
     isClearable = false,
     innerRef = undefined,
-    isArrow = true
+    isArrow = true,
+    isTextCenter = false
   } = props;
 
   const DropdownIndicator = (
@@ -44,17 +38,6 @@ const Select = (props: SelectProps): JSX.Element => {
       return null;
     }
 
-    if (isAddButton) {
-      return (
-        <components.DropdownIndicator {...props}>
-          <button
-            type='button'
-            className={styles.select__button}
-            onClick={() => onDropdownIndicator?.()}
-          ></button>
-        </components.DropdownIndicator>
-      );
-    }
     return (
       <components.DropdownIndicator {...props}></components.DropdownIndicator>
     );
@@ -62,17 +45,17 @@ const Select = (props: SelectProps): JSX.Element => {
 
   return (
     <>
-      <label htmlFor={id} className={styles.select__label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className={styles.select__label}>
+          {label}
+        </label>
+      )}
       <ReactSelect
         id={id}
         options={options}
         ref={innerRef}
         name={id}
         isClearable={isClearable}
-        isSearchable={isAddButton ? false : isSearchable}
-        menuIsOpen={isAddButton ? false : undefined}
         defaultValue={defaultValue}
         noOptionsMessage={({ inputValue }) =>
           isLoading
@@ -92,9 +75,15 @@ const Select = (props: SelectProps): JSX.Element => {
               : styles.select__container,
           dropdownIndicator: () => styles.select__arrow,
           indicatorSeparator: () => styles.select__separator,
-          valueContainer: () => styles.select__value,
+          valueContainer: () =>
+            isTextCenter
+              ? `${styles.select__value} ${styles.select__value_center}`
+              : styles.select__value,
           menu: () => styles.select__menu,
-          option: () => styles.select__option,
+          option: () =>
+            isTextCenter
+              ? `${styles.select__option} ${styles.select__option_center}`
+              : styles.select__option,
           singleValue: () => styles['single-value'],
           clearIndicator: () => styles.select__close
         }}
@@ -108,5 +97,4 @@ const Select = (props: SelectProps): JSX.Element => {
 };
 
 export default Select;
-export const SelectChips = ReactSelectChips(ReactSelect);
 export const AsyncSelect = AsyncSelectReact;

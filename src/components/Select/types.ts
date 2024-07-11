@@ -11,7 +11,7 @@ export type OptionChange = OptionType | OptionType[] | readonly OptionType[];
 export type SelectProps = {
   options?: OptionsType | any;
   id?: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   tooltip?: ReactNode;
   onDropdownIndicator?: () => void;
@@ -20,9 +20,6 @@ export type SelectProps = {
   noOptionsMessage?: string;
   noOptionsMessageDefault?: string;
   isLoading?: boolean;
-  isRequired?: boolean;
-  isError?: boolean;
-  isAddButton?: boolean;
   isSearchable?: boolean;
   isDisabled?: boolean;
   defaultValue?: OptionType | OptionsType;
@@ -30,6 +27,7 @@ export type SelectProps = {
   isClearable?: boolean;
   isArrow?: boolean;
   innerRef?: any;
+  isTextCenter?: boolean;
 };
 
 export type optionsMessageProps = {

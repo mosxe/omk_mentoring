@@ -41,11 +41,15 @@
   }
 
   &__value {
-    padding: 4px 6px 8px 10px !important;
+    padding: 4px 6px 4px 10px !important;
     font-size: 16px !important;
     font-weight: 400 !important;
     line-height: 20.8px !important;
     color: var(--page-color-black) !important;
+
+    &_center {
+      text-align: center;
+    }
 
     & .single-value {
       grid-area: 1/1/2/3;
@@ -84,6 +88,14 @@
     color: var(--page-color-link) !important;
     background-color: #fff !important;
     transition: color 0.3s;
+
+    &_center {
+      text-align: center;
+    }
+
+    &[aria-selected='true'] {
+      color: var(--page-color-black) !important;
+    }
 
     &:first-child {
       border-top-left-radius: 10px !important;

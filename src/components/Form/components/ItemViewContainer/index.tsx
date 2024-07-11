@@ -2,6 +2,7 @@
 import ItemSelect from '../ItemSelect';
 import ItemProfession from '../ItemProfession';
 import ItemPhone from '../ItemPhone';
+import ItemDate from '../ItemDate';
 
 type Props = {
   view: string;
@@ -20,7 +21,7 @@ const ItemViewContainer = ({ view }: Props) => {
     case '4':
       return <ItemPhone />;
     case '5':
-      return null;
+      return <ItemDate />;
     default:
       return null;
   }

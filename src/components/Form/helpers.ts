@@ -14,4 +14,17 @@ const getItemView = (value: string): string => {
   return view !== undefined ? view.id : '';
 };
 
-export { getRadioButtonChecked, getItemView };
+const getYearOptions = () => {
+  const yearOptions = [];
+  const currentYear = new Date().getFullYear();
+
+  for (let i = currentYear - 10; i <= currentYear; i++) {
+    yearOptions.push({
+      value: i,
+      label: i
+    });
+  }
+  return yearOptions;
+};
+
+export { getRadioButtonChecked, getItemView, getYearOptions };
