@@ -1,19 +1,20 @@
 ﻿import { useState, forwardRef } from 'react';
 import Popap from 'components/Popap';
 import Form from 'components/Form';
-// import PopapAlert from '../Program/PopapAlert';
+import { PopapAlert } from 'components/Popap';
 import { toast } from 'react-toastify';
 import Image1 from 'assets/svg/Starting/number_1.svg';
 import Image2 from 'assets/svg/Starting/number_2.svg';
 import Image3 from 'assets/svg/Starting/number_3.svg';
 import { ResponseForm } from 'types';
-import { getFormMentor } from 'services';
+import { getFormMentor, postFormData } from 'services';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
 const Starting = forwardRef<HTMLDivElement>((_, ref) => {
   const [data, setData] = useState<ResponseForm>(initialForm);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const [isLoadingContent, setLoadingContent] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
   const [isShowPopap, setShowPopap] = useState<boolean>(false);
   const [isShowAlert, setShowAlert] = useState<boolean>(false);
@@ -43,28 +44,27 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
     }
   };
 
-  const onCloseForm = (isErrorFetch: boolean) => {
-    if (isErrorFetch) {
-      setShowPopap(false);
-      toast('Произошла ошибка');
-    } else {
-      setShowAlert(true);
-    }
-  };
-
   const onSubmit = (dataForm: Record<string, string | boolean>) => {
     console.log(dataForm);
-    // setLoadingPost(true);
+    setLoadingContent(true);
     // const formData = transformData(dataForm, data.data);
-    // postFormData(formData)
-    //   .then((res) => {
-    //     onClose(res.isError);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //     onClose(true);
-    //   })
-    //   .finally(() => setLoadingPost(false));
+    const formData = [];
+    console.log('onSubmit');
+    postFormData(formData)
+      .then((res) => {
+        if (res.isError) {
+          setShowPopap(false);
+          toast('Произошла ошибка');
+        } else {
+          setShowAlert(true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        setShowPopap(false);
+        toast('Произошла ошибка');
+      })
+      .finally(() => setLoadingContent(false));
   };
 
   return (
@@ -149,13 +149,13 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
           <Form
             title='Хочу стать наставником'
             isLoading={isLoading}
+            isLoadingContent={isLoadingContent}
             isError={isError}
             data={data}
-            onClose={onCloseForm}
             onSubmit={onSubmit}
           />
         ) : (
-          <span>asdasdsadasda</span>
+          <PopapAlert type='mentor' />
         )}
       </Popap>
     </>

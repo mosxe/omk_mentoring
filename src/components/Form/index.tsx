@@ -14,21 +14,21 @@ type Props = {
   title: string;
   isRequest?: boolean;
   isLoading: boolean;
+  isLoadingContent: boolean;
   isError: boolean;
-  onClose: (isError: boolean) => void;
-  onSubmit: (data: Record<string, string | boolean>) => Promise<void>;
+  onSubmit: (data: Record<string, string | boolean>) => void;
 };
 const Form = ({
   data,
   title,
   isRequest = false,
   isLoading,
+  isLoadingContent,
   isError,
-  onClose,
   onSubmit
 }: Props) => {
   const [isDisabledForm, setDisabledForm] = useState<boolean>(true);
-  const [isLoadingPost, setLoadingPost] = useState<boolean>(false);
+  // const [isLoadingPost, setLoadingPost] = useState<boolean>(false);
   const methods = useForm();
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const Form = ({
     <>
       <FormProvider {...methods}>
         <form className={styles.form} onSubmit={methods.handleSubmit(onSubmit)}>
-          {isLoadingPost && <LoaderContent />}
+          {isLoadingContent && <LoaderContent />}
           <Header title={title} isRequest={isRequest} />
           <div className={styles.form__text}>
             Уважаемый коллега, просим Вас ответить на {data.data.length}{' '}

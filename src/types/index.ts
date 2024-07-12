@@ -55,6 +55,5 @@ export interface ResponseProfessions extends Error {
 
 export interface FormData {
   id: string;
-  entries: Record<string, string | boolean>[];
-  comments: string;
+  entries: Record<string, string>[];
 }

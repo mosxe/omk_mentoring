@@ -4,6 +4,7 @@ import {
   ResponseSearchCollaborators,
   ResponseForm,
   ResponseProfessions,
+  FormData,
   Error as IError
 } from 'types';
 import {
@@ -128,76 +129,35 @@ export const getProfessions = async (
   }
 };
 
-// export const initialData = {
-//   data: {
-//     programs: [],
-//     materials: [],
-//     events: [],
-//     contacts: {
-//       photo: '',
-//       fullname: '',
-//       position_name: '',
-//       email: ''
-//     },
-//     link_model_competence: '',
-//     link_events: '',
-//     model_competence_video: ''
-//   },
-//   isError: false,
-//   errorMessage: ''
-// };
+export const postFormData = async (data: FormData[]): Promise<IError> => {
+  const API_URL = getUrl('postFormData');
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: data })
+  };
 
-// export const getFetchData = async (): Promise<ResponseData> => {
-//   const API_URL = getUrl('getData');
-//   try {
-//     if (import.meta.env.DEV) {
-//       const results = (await mockFetchData(data.fetchData)) as ResponseData;
-//       return results;
-//     }
+  try {
+    if (import.meta.env.DEV) {
+      const results = (await mockFetchData({
+        isError: false,
+        errorMessage: ''
+      })) as IError;
+      return results;
+    }
 
-//     const response = await fetch(API_URL);
+    const response = await fetch(API_URL, requestOptions);
 
-//     if (!response.ok) {
-//       throw Error(response.statusText);
-//     }
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
 
-//     const json = await response.json();
-//     return json;
-//   } catch (e) {
-//     initialData.isError = true;
-//     return initialData;
-//   }
-// };
-
-// export const postFormData = async (data: FormData[]): Promise<IError> => {
-//   const API_URL = getUrl('postFormData');
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({ data: data })
-//   };
-
-//   try {
-//     if (import.meta.env.DEV) {
-//       const results = (await mockFetchData({
-//         isError: false,
-//         errorMessage: ''
-//       })) as IError;
-//       return results;
-//     }
-
-//     const response = await fetch(API_URL, requestOptions);
-
-//     if (!response.ok) {
-//       throw Error(response.statusText);
-//     }
-
-//     const json = await response.json();
-//     return json;
-//   } catch (e) {
-//     return { isError: true, errorMessage: '' };
-//   }
-// };
+    const json = await response.json();
+    return json;
+  } catch (e) {
+    return { isError: true, errorMessage: '' };
+  }
+};
 
 // export const sendRequest = async (data: Request): Promise<IError> => {
 //   const API_URL = getUrl('sendRequest');

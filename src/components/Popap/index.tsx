@@ -1,6 +1,7 @@
 ﻿import { useRef, useEffect, useState, ReactNode, useCallback } from 'react';
 import PopapHeader from './PopapHeader';
 import PopapBody from './PopapBody';
+import PopapAlert from './Alert';
 import { createPortal } from 'react-dom';
 import styles from './styles.module.scss';
 
@@ -78,3 +79,5 @@ const Popap = ({ isShow, onClose, children, width }: Props) => {
 };
 
 export default Popap;
+
+export { PopapAlert };
