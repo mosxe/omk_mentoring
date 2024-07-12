@@ -12,8 +12,27 @@ const initialProfessions = {
 
 const initialForm = {
   data: [],
+  person: {
+    firstname: '',
+    middlename: '',
+    lastname: '',
+    tab_number: '',
+    position: '',
+    subdivision: ''
+  },
   isError: false,
   errorMessage: ''
 };
 
-export { initialSearchCollaborators, initialProfessions, initialForm };
+const initialData = {
+  data: [],
+  isError: false,
+  errorMessage: ''
+};
+
+export {
+  initialSearchCollaborators,
+  initialProfessions,
+  initialForm,
+  initialData
+};

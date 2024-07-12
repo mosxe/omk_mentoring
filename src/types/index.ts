@@ -3,7 +3,7 @@
   errorMessage: string;
 }
 
-export interface Collaborator {
+export interface SearchCollaborator {
   id: string;
   name: string;
   tab_number: string;
@@ -12,51 +12,12 @@ export interface Collaborator {
 }
 
 export interface ResponseSearchCollaborators extends Error {
-  data: Collaborator[];
+  data: SearchCollaborator[];
 }
 
-// export interface Material {
-//   type: string;
-//   title: string;
-//   desc: string;
-//   is_download: boolean;
-//   link: string;
-// }
-
-// export interface Event {
-//   link: string;
-//   title: string;
-//   start_date: string;
-//   start_time: string;
-//   photo: string;
-//   fullname: string;
-//   position_name: string;
-//   desc: string;
-// }
-
-// export interface Program {
-//   title_program: string;
-//   is_diagnostics: string;
-//   is_training: string;
-//   is_development_plan: string;
-//   is_certification: string;
-//   title_desc: string;
-//   is_button_link: string;
-//   is_button_file: string;
-//   is_button_message: string;
-//   title_settings: string;
-//   link_page: string;
-//   object_file_id: string;
-//   notification_type_id: string;
-//   button_name: string;
-// }
-
-// export interface Contact {
-//   photo: string;
-//   fullname: string;
-//   position_name: string;
-//   email: string;
-// }
+export interface ResponseData extends Error {
+  data: any;
+}
 
 export interface Entry {
   id: string;
@@ -71,16 +32,18 @@ export interface Poll {
   type: 'select' | 'text' | 'choice' | 'combo' | 'link_to_database_object';
 }
 
+export interface Collaborator {
+  middlename: string;
+  firstname: string;
+  lastname: string;
+  tab_number: string;
+  position: string;
+  subdivision: string;
+}
+
 export interface ResponseForm extends Error {
   data: Poll[];
-  person: {
-    middlename: string;
-    firstname: string;
-    lastname: string;
-    number: string;
-    position: string;
-    subdivision: string;
-  };
+  person: Collaborator;
 }
 
 export interface ResponseProfessions extends Error {
@@ -88,4 +51,10 @@ export interface ResponseProfessions extends Error {
     value: string;
     label: string;
   }[];
+}
+
+export interface FormData {
+  id: string;
+  entries: Record<string, string | boolean>[];
+  comments: string;
 }

@@ -1,32 +1,31 @@
-﻿import { useState, useRef, useEffect } from 'react';
+﻿import { useRef, useEffect } from 'react';
 import { useFormContext, Controller, useFieldArray } from 'react-hook-form';
 import AsyncSelect from 'components/Select/AsyncSelect';
-import { Option } from 'components/Select/types';
-import { getProfessions } from 'services';
-import { MAX_COUNT_PROFESSIONS } from '../../constants';
 import debounce from 'lodash.debounce';
+import { getProfessions } from 'services';
+import {
+  MAX_COUNT_PROFESSIONS,
+  SELECT_MESSAGES_PROFESSIONS
+} from '../../constants';
 import styles from './styles.module.scss';
-import { Collaborator } from 'types';
+import { Poll } from 'types';
 
-export const MESSAGES = {
-  initial: 'Введите ФИО сотрудника',
-  loading: 'Загрузка данных...',
-  noOption: 'Данные не найдены',
-  error: 'Произошла ошибка, попробуйте повторить позднее'
+type Props = {
+  data: Poll;
 };
 
-const ItemProfession = () => {
-  const { control, setValue } = useFormContext();
+const ItemProfession = ({ data }: Props) => {
+  const { control } = useFormContext();
   const { fields, append } = useFieldArray({
-    name: 'professions',
+    name: data.id,
     control
   });
-  const [selectData, setSelectData] = useState<Collaborator[]>([]);
-  const [selectedValue, setSelectedValue] = useState<string | number>('');
-  const messageRef = useRef<string>(MESSAGES.initial);
+  const messageRef = useRef<string>(SELECT_MESSAGES_PROFESSIONS.initial);
 
   const noOptionsMessage = ({ inputValue }: { inputValue: string }) => {
-    return inputValue ? messageRef.current : MESSAGES.initial;
+    return inputValue
+      ? messageRef.current
+      : SELECT_MESSAGES_PROFESSIONS.initial;
   };
 
   useEffect(() => {
@@ -40,27 +39,28 @@ const ItemProfession = () => {
           messageRef.current = '';
           callback(data.data);
         } else {
-          messageRef.current = 'EROR';
-          // data.error.code > 0 ? MESSAGES.error : MESSAGES.noOption;
+          messageRef.current = data.isError
+            ? SELECT_MESSAGES_PROFESSIONS.error
+            : SELECT_MESSAGES_PROFESSIONS.noOption;
           callback([]);
         }
       })
       .catch(() => {
-        messageRef.current = MESSAGES.error;
+        messageRef.current = SELECT_MESSAGES_PROFESSIONS.error;
         callback([]);
       });
   }, 300);
 
   const getCompetenceProfiles = (input: string, callback: (any) => void) => {
     if (input.trim().length === 0) {
-      messageRef.current = MESSAGES.initial;
+      messageRef.current = SELECT_MESSAGES_PROFESSIONS.initial;
       return callback([]);
     }
     debouncedCompetenceProfiles(input, callback);
   };
 
   const handleAddProfession = () => {
-    append({ value: null }, { shouldFocus: false });
+    append({ value: undefined }, { shouldFocus: false });
   };
 
   return (
@@ -70,7 +70,7 @@ const ItemProfession = () => {
           <Controller
             key={field.id}
             control={control}
-            name={`professions.${index}.value`}
+            name={`${data.id}.${index}.value`}
             render={({ field: { value, onChange, ref } }) => {
               return (
                 <AsyncSelect
@@ -78,7 +78,6 @@ const ItemProfession = () => {
                   innerRef={ref}
                   loadOptions={getCompetenceProfiles}
                   value={value}
-                  defaultValue={null}
                   onChange={onChange}
                   noOptionsMessage={noOptionsMessage}
                   isArrow={false}
@@ -86,16 +85,6 @@ const ItemProfession = () => {
               );
             }}
           />
-          // <EstimateProfile
-          //   key={field.id}
-          //   index={index}
-          //   remove={remove}
-          //   field={field}
-          //   propertiesFieldProfile={propertiesFieldProfile}
-          //   propertiesFieldExternalExpertise={propertiesFieldExternalExpertise}
-          //   propertiesFieldCompetenceCenter={propertiesFieldCompetenceCenter}
-          //   onUpdateFields={onUpdateFields}
-          // />
         );
       })}
       {fields.length < MAX_COUNT_PROFESSIONS && (

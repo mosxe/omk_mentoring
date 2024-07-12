@@ -2,31 +2,29 @@
 import { useFormContext, Controller } from 'react-hook-form';
 import AsyncSelect from 'components/Select/AsyncSelect';
 import { Option } from 'components/Select/types';
-import { searchCollaborators } from 'services';
+import { getCollaborators } from 'services';
+import { SELECT_MESSAGES_PERSONS } from '../../constants';
 import debounce from 'lodash.debounce';
 import classNames from 'classnames';
 import styles from './styles.module.scss';
-import { Collaborator } from 'types';
+import { SearchCollaborator, Poll } from 'types';
 
-export const MESSAGES = {
-  initial: 'Введите ФИО сотрудника',
-  loading: 'Загрузка данных...',
-  noOption: 'Данные не найдены',
-  error: 'Произошла ошибка, попробуйте повторить позднее'
+type Props = {
+  data: Poll;
 };
 
-const ItemSelect = () => {
-  const { control, setValue } = useFormContext();
-  const [selectData, setSelectData] = useState<Collaborator[]>([]);
+const ItemSelect = ({ data }: Props) => {
+  const { control } = useFormContext();
+  const [selectData, setSelectData] = useState<SearchCollaborator[]>([]);
   const [selectedValue, setSelectedValue] = useState<string | number>('');
-  const messageRef = useRef<string>(MESSAGES.initial);
+  const messageRef = useRef<string>(SELECT_MESSAGES_PERSONS.initial);
 
   const noOptionsMessage = ({ inputValue }: { inputValue: string }) => {
-    return inputValue ? messageRef.current : MESSAGES.initial;
+    return inputValue ? messageRef.current : SELECT_MESSAGES_PERSONS.initial;
   };
 
   const debouncedCompetenceProfiles = debounce(async (input, callback) => {
-    await searchCollaborators(input)
+    await getCollaborators(input)
       .then((data) => {
         if (data.data.length > 0) {
           const selectOptions = data.data.map((item) => ({
@@ -36,23 +34,23 @@ const ItemSelect = () => {
           setSelectData(data.data);
           // setSelectOptions(selectOptions);
           messageRef.current = '';
-          console.log(selectOptions);
           callback(selectOptions);
         } else {
-          messageRef.current = 'EROR';
-          // data.error.code > 0 ? MESSAGES.error : MESSAGES.noOption;
+          messageRef.current = data.isError
+            ? SELECT_MESSAGES_PERSONS.error
+            : SELECT_MESSAGES_PERSONS.noOption;
           callback([]);
         }
       })
       .catch(() => {
-        messageRef.current = MESSAGES.error;
+        messageRef.current = SELECT_MESSAGES_PERSONS.error;
         callback([]);
       });
   }, 300);
 
   const getCompetenceProfiles = (input: string, callback: (any) => void) => {
     if (input.trim().length === 0) {
-      messageRef.current = MESSAGES.initial;
+      messageRef.current = SELECT_MESSAGES_PERSONS.initial;
       return callback([]);
     }
     debouncedCompetenceProfiles(input, callback);
@@ -70,15 +68,15 @@ const ItemSelect = () => {
     <div className={styles['item-select']}>
       <Controller
         control={control}
-        name={`competency_profile_adad`}
+        name={data.id}
         render={({ field: { value, onChange, ref } }) => {
           return (
             <AsyncSelect
-              id={`competency_profile_adad`}
               label=''
               innerRef={ref}
               loadOptions={getCompetenceProfiles}
               value={value}
+              placeholder='Поиск...'
               onChange={(selected) => {
                 const { value } = selected as Option;
                 onChange(selected);

@@ -1,19 +1,33 @@
-﻿import styles from './styles.module.scss';
+﻿import { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { Poll, Collaborator } from 'types';
+import styles from './styles.module.scss';
 
-const ItemPerson = () => {
+type Props = {
+  data: Poll;
+  person: Collaborator;
+};
+
+const ItemPerson = ({ data, person }: Props) => {
+  const { setValue } = useFormContext();
+
+  useEffect(() => {
+    setValue(data.id, data.entries[0].id);
+  }, []);
+
   return (
     <div className={styles['item-person']}>
       <div className={styles['item-person__row']}>
         <span className={styles['item-person__title']}>Фамилия</span>
-        <div className={styles['item-person__value']}>sadsadasdas</div>
+        <div className={styles['item-person__value']}>{person.lastname}</div>
       </div>
       <div className={styles['item-person__row']}>
         <span className={styles['item-person__title']}>Имя</span>
-        <div className={styles['item-person__value']}>sadsadasdas</div>
+        <div className={styles['item-person__value']}>{person.firstname}</div>
       </div>
       <div className={styles['item-person__row']}>
         <span className={styles['item-person__title']}>Отчество</span>
-        <div className={styles['item-person__value']}>sadsadasdas</div>
+        <div className={styles['item-person__value']}>{person.middlename}</div>
       </div>
       <div className={styles['item-person__wrapper']}>
         <div className={styles['item-person__row']}>
@@ -25,7 +39,7 @@ const ItemPerson = () => {
           <div
             className={`${styles['item-person__value']} ${styles['item-person__value_round']}`}
           >
-            sadsadasdas
+            {person.tab_number}
           </div>
         </div>
         <div className={styles['item-person__row']}>
@@ -37,7 +51,7 @@ const ItemPerson = () => {
           <div
             className={`${styles['item-person__value']} ${styles['item-person__value_round']}`}
           >
-            sadsadasdas
+            {person.position}
           </div>
         </div>
         <div className={styles['item-person__row']}>
@@ -49,7 +63,7 @@ const ItemPerson = () => {
           <div
             className={`${styles['item-person__value']} ${styles['item-person__value_round']}`}
           >
-            sadsadasdas
+            {person.subdivision}
           </div>
         </div>
       </div>

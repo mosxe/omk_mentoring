@@ -1,28 +1,26 @@
 ﻿import RadioButton from 'components/RadioButton';
 import { useFormContext, Controller } from 'react-hook-form';
-
-import { Entry } from 'types';
+import { Poll } from 'types';
 
 type Props = {
-  id: string;
-  data: Entry[];
+  data: Poll;
 };
 
-const ItemRadio = ({ id, data }: Props) => {
+const ItemRadio = ({ data }: Props) => {
   const { control } = useFormContext();
 
   return (
     <Controller
       control={control}
-      name={id}
+      name={data.id}
       defaultValue=''
       render={({ field: { value, onChange } }) => (
         <>
-          {data.map((item) => {
+          {data.entries.map((item) => {
             return (
               <RadioButton
                 key={item.id}
-                name={id}
+                name={data.id}
                 value={item.id}
                 onChange={onChange}
                 checked={value === item.id}
@@ -58,20 +56,6 @@ const ItemRadio = ({ id, data }: Props) => {
       )}
     />
   );
-
-  return data.map((item) => {
-    console.log(value);
-    return (
-      <RadioButton
-        key={item.id}
-        value={item.id}
-        // onChange={onChange}
-        label={item.title}
-        // checked={value === item.id}
-        // name={name}
-      />
-    );
-  });
 };
 
 export default ItemRadio;

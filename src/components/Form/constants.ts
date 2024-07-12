@@ -73,3 +73,22 @@ export const MONTHS = [
 ];
 
 export const MAX_COUNT_PROFESSIONS = 8;
+
+export const SELECT_MESSAGES_PERSONS = {
+  initial: 'Введите ФИО сотрудника',
+  loading: 'Загрузка данных...',
+  noOption: 'Сотрудники не найдены',
+  error: 'Произошла ошибка, попробуйте повторить позднее'
+};
+
+export const SELECT_MESSAGES_PROFESSIONS = {
+  initial: 'Введите название',
+  loading: 'Загрузка данных...',
+  noOption: 'Данные не найдены',
+  error: 'Произошла ошибка, попробуйте повторить позднее'
+};
+//select - checkbox
+//choice - radiobutton
+//combo
+//text - ввод текста
+//link_to_database_object - ссылка на ресурс

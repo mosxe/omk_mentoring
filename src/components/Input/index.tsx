@@ -43,12 +43,6 @@ const Input = ({
     );
   }
 
-  //   <input
-  //   type="tel"
-  //   pattern="(^8|7|\+7)([0-9]{10})"
-  // placeholder="+7( )"
-  //   required
-  //  >
   return (
     <>
       {label && (

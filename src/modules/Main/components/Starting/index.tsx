@@ -52,6 +52,21 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
     }
   };
 
+  const onSubmit = (dataForm: Record<string, string | boolean>) => {
+    console.log(dataForm);
+    // setLoadingPost(true);
+    // const formData = transformData(dataForm, data.data);
+    // postFormData(formData)
+    //   .then((res) => {
+    //     onClose(res.isError);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //     onClose(true);
+    //   })
+    //   .finally(() => setLoadingPost(false));
+  };
+
   return (
     <>
       <section className={styles.starting} ref={ref}>
@@ -137,6 +152,7 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
             isError={isError}
             data={data}
             onClose={onCloseForm}
+            onSubmit={onSubmit}
           />
         ) : (
           <span>asdasdsadasda</span>

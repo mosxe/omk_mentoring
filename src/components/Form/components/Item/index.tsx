@@ -6,21 +6,22 @@ import ItemContainer from '../ItemContainer';
 import ItemViewContainer from '../ItemViewContainer';
 import ItemRadio from '../ItemRadio';
 import { getItemView } from '../../helpers';
-import { Poll } from 'types';
+import { Poll, Collaborator } from 'types';
 
 type Props = {
   data: Poll;
+  person: Collaborator;
   index: number;
 };
 
-const Item = ({ data, index }: Props) => {
+const Item = ({ data, person, index }: Props) => {
   const { register, control } = useFormContext();
   const itemView = getItemView(data.view);
 
   if (itemView) {
     return (
       <ItemContainer title={data.title} index={index}>
-        <ItemViewContainer view={itemView} />
+        <ItemViewContainer data={data} person={person} view={itemView} />
       </ItemContainer>
     );
   }
@@ -43,7 +44,7 @@ const Item = ({ data, index }: Props) => {
         />
       )}
       {data.type === 'choice' && data.entries.length > 0 && (
-        <ItemRadio id={data.id} data={data.entries} />
+        <ItemRadio data={data} />
       )}
       {data.type === 'select' &&
         data.entries.map((entry, indexEntry) => {

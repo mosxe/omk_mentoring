@@ -154,6 +154,10 @@
       cursor: pointer;
     }
   }
+
+  &__text-left {
+    text-align: left !important;
+  }
 }
 
 .loading-hidden {

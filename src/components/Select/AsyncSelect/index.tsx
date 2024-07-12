@@ -27,7 +27,6 @@ const AsyncSelectReact = (
     onChange,
     noOptionsMessage,
     value,
-    isError = false,
     isDisabled = false,
     loadOptions,
     innerRef = undefined,
@@ -66,14 +65,12 @@ const AsyncSelectReact = (
         components={{ DropdownIndicator }}
         ref={innerRef}
         name={id}
-        placeholder={isDisabled ? '' : 'Поиск...'}
+        placeholder={'Поиск...'}
         noOptionsMessage={noOptionsMessage}
         loadingMessage={() => 'Загрузка данных...'}
         classNames={{
           control: ({ isDisabled }) =>
-            isError
-              ? `${styles.select__container} ${styles.error}`
-              : isDisabled
+            isDisabled
               ? `${styles.select__container} ${styles.disabled}`
               : styles.select__container,
           dropdownIndicator: () => styles.select__arrow,
@@ -82,11 +79,12 @@ const AsyncSelectReact = (
           menu: () => styles.select__menu_async,
           option: () => styles.select__option,
           loadingIndicator: () => styles['loading-hidden'],
-          singleValue: () => styles['single-value']
+          singleValue: () => styles['single-value'],
+          loadingMessage: () => styles['select__text-left'],
+          noOptionsMessage: () => styles['select__text-left']
         }}
         value={value}
         onChange={onChange}
-        isDisabled={isDisabled}
         loadOptions={loadOptions}
       />
     </>

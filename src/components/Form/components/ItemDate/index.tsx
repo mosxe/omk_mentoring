@@ -2,9 +2,14 @@
 import Select from 'components/Select';
 import { getYearOptions } from '../../helpers';
 import { MONTHS } from 'components/Form/constants';
+import { Poll } from 'types';
 import styles from './styles.module.scss';
 
-const ItemDate = () => {
+type Props = {
+  data: Poll;
+};
+
+const ItemDate = ({ data }: Props) => {
   const { control } = useFormContext();
   const yearOptions = getYearOptions();
 
@@ -15,7 +20,8 @@ const ItemDate = () => {
         <div className={styles['item-date__value']}>
           <Controller
             control={control}
-            name='object_id_222'
+            name={`${data.id}.month`}
+            defaultValue={{ value: '', label: '' }}
             render={({ field: { value, onChange, ref } }) => {
               return (
                 <>
@@ -39,7 +45,8 @@ const ItemDate = () => {
         <div className={styles['item-date__value']}>
           <Controller
             control={control}
-            name='object_id_2222221111'
+            name={`${data.id}.year`}
+            defaultValue={{ value: '', label: '' }}
             render={({ field: { value, onChange, ref } }) => {
               return (
                 <>

@@ -1,5 +1,6 @@
 ﻿import data from './mockData.json';
 import {
+  ResponseData,
   ResponseSearchCollaborators,
   ResponseForm,
   ResponseProfessions,
@@ -8,7 +9,8 @@ import {
 import {
   initialSearchCollaborators,
   initialProfessions,
-  initialForm
+  initialForm,
+  initialData
 } from './constants';
 
 const getUrl = (action: string, ...params) => {
@@ -30,10 +32,32 @@ const mockFetchData = (data: any) => {
 
 const TEMPLATE_ID = '7040314279102083651';
 
-export const searchCollaborators = async (
+export const getData = async (): Promise<ResponseData> => {
+  const API_URL = getUrl('getData');
+  try {
+    if (import.meta.env.DEV) {
+      const results = (await mockFetchData(data.fetchData)) as ResponseData;
+      return results;
+    }
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (e) {
+    initialData.isError = true;
+    return initialData;
+  }
+};
+
+export const getCollaborators = async (
   value: string
 ): Promise<ResponseSearchCollaborators> => {
-  const API_URL = getUrl('searchCollaborators', { search: value });
+  const API_URL = getUrl('getCollaborators', { search: value });
   try {
     if (import.meta.env.DEV) {
       const results = (await mockFetchData(
