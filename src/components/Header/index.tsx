@@ -2,7 +2,6 @@
 import HeaderImage from 'assets/images/header.png';
 import HeaderImageMobile from 'assets/images/header_mobile.png';
 import HeaderLogo from 'assets/images/header_logo.png';
-import HeaderIcon from 'assets/svg/header.svg';
 import styles from './styles.module.scss';
 
 const Header = () => {

@@ -51,7 +51,10 @@ const ItemProfession = ({ data }: Props) => {
       });
   }, 300);
 
-  const getCompetenceProfiles = (input: string, callback: (any) => void) => {
+  const getCompetenceProfiles = (
+    input: string,
+    callback: (data: any) => void
+  ) => {
     if (input.trim().length === 0) {
       messageRef.current = SELECT_MESSAGES_PROFESSIONS.initial;
       return callback([]);

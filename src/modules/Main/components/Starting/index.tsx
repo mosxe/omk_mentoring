@@ -7,7 +7,8 @@ import Image1 from 'assets/svg/Starting/number_1.svg';
 import Image2 from 'assets/svg/Starting/number_2.svg';
 import Image3 from 'assets/svg/Starting/number_3.svg';
 import { ResponseForm } from 'types';
-import { getFormMentor, postFormData } from 'services';
+import { getForm, postFormData } from 'services';
+import { transformData } from 'helpers';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
@@ -28,7 +29,7 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
     setShowPopap(!isShowPopap);
     if (!data.data.length) {
       setLoading(true);
-      getFormMentor()
+      getForm('person_mentor')
         .then((res) => {
           if (res.isError) {
             setError(true);
@@ -45,12 +46,10 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
   };
 
   const onSubmit = (dataForm: Record<string, string | boolean>) => {
-    console.log(dataForm);
     setLoadingContent(true);
-    // const formData = transformData(dataForm, data.data);
-    const formData = [];
-    console.log('onSubmit');
-    postFormData(formData)
+    const formData = transformData(dataForm);
+    console.log(formData);
+    postFormData(formData, 'person_mentor')
       .then((res) => {
         if (res.isError) {
           setShowPopap(false);

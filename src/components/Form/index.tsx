@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
-import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import Header from './components/Header';
 import Item from './components/Item';
 import Loader from 'components/Loader';
@@ -28,8 +28,11 @@ const Form = ({
   onSubmit
 }: Props) => {
   const [isDisabledForm, setDisabledForm] = useState<boolean>(true);
-  // const [isLoadingPost, setLoadingPost] = useState<boolean>(false);
   const methods = useForm();
+
+  const clssNameForm = isRequest
+    ? `${styles.form} ${styles.form_request}`
+    : styles.form;
 
   useEffect(() => {
     const subscription = methods.watch((values) => {
@@ -47,7 +50,7 @@ const Form = ({
 
   if (isLoading) {
     return (
-      <form className={styles.form}>
+      <form className={clssNameForm}>
         <Header title={title} isRequest={isRequest} />
         <div className={styles.form__wrapper}>
           <Loader />
@@ -58,9 +61,11 @@ const Form = ({
 
   if (isError || data.isError) {
     return (
-      <form>
+      <form className={clssNameForm}>
         <Header title={title} isRequest={isRequest} />
-        <div className={styles.form__wrapper}>
+        <div
+          className={`${styles.form__wrapper} ${styles.form__wrapper_error}`}
+        >
           <Error />
         </div>
       </form>
@@ -70,7 +75,10 @@ const Form = ({
   return (
     <>
       <FormProvider {...methods}>
-        <form className={styles.form} onSubmit={methods.handleSubmit(onSubmit)}>
+        <form
+          className={clssNameForm}
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
           {isLoadingContent && <LoaderContent />}
           <Header title={title} isRequest={isRequest} />
           <div className={styles.form__text}>

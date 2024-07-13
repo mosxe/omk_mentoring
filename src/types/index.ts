@@ -29,7 +29,7 @@ export interface Poll {
   title: string;
   view: string;
   entries: Entry[];
-  type: 'select' | 'text' | 'choice' | 'combo' | 'link_to_database_object';
+  type: 'select' | 'text' | 'choice' | 'date' | 'link_to_database_object';
 }
 
 export interface Collaborator {
@@ -55,5 +55,11 @@ export interface ResponseProfessions extends Error {
 
 export interface FormData {
   id: string;
-  entries: Record<string, string>[];
+  value: string;
 }
+
+export type FormType =
+  | 'person_mentor'
+  | 'person_training'
+  | 'manager_mentor'
+  | 'manager_training';

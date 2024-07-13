@@ -3,7 +3,7 @@
 const Competences = () => {
   const link = '12312';
 
-  const handleClick = (isProgram: boolean) => {
+  const handleClick = (isProgram?: boolean) => {
     // const linkFile = getLinkFile(link);
     let linkName = 'Корпоративные компетенции наставника';
     let linkFile = '12312';

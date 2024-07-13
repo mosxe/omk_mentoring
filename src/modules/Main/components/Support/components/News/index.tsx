@@ -104,7 +104,7 @@ const News = () => {
             }
           }}
         >
-          {sliders.map((slider, index) => {
+          {sliders.map((_, index) => {
             return (
               <SwiperSlide key={index}>
                 <Slider />

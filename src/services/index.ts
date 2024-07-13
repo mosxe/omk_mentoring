@@ -5,6 +5,7 @@ import {
   ResponseForm,
   ResponseProfessions,
   FormData,
+  FormType,
   Error as IError
 } from 'types';
 import {
@@ -14,12 +15,20 @@ import {
   initialData
 } from './constants';
 
-const getUrl = (action: string, ...params) => {
+const getUrl = (action: string, params?: any[]) => {
   const urlParams = new URLSearchParams({
     custom_web_template_id: TEMPLATE_ID,
-    action,
-    ...params
+    action
   });
+
+  if (params !== undefined) {
+    params.forEach((param) => {
+      const key = Object.keys(param)[0];
+      const value = Object.values(param)[0] as string;
+      urlParams.append(key, value);
+    });
+  }
+
   const BASE_URL = window.location.origin;
   const API_URL = BASE_URL + '/custom_web_template.html?' + urlParams;
   return API_URL;
@@ -31,7 +40,7 @@ const mockFetchData = (data: any) => {
   });
 };
 
-const TEMPLATE_ID = '7040314279102083651';
+const TEMPLATE_ID = '7046926645625566409';
 
 export const getData = async (): Promise<ResponseData> => {
   const API_URL = getUrl('getData');
@@ -58,7 +67,7 @@ export const getData = async (): Promise<ResponseData> => {
 export const getCollaborators = async (
   value: string
 ): Promise<ResponseSearchCollaborators> => {
-  const API_URL = getUrl('getCollaborators', { search: value });
+  const API_URL = getUrl('getCollaborators', [{ search: value }]);
   try {
     if (import.meta.env.DEV) {
       const results = (await mockFetchData(
@@ -81,8 +90,9 @@ export const getCollaborators = async (
   }
 };
 
-export const getFormMentor = async (): Promise<ResponseForm> => {
-  const API_URL = getUrl('getDataForm');
+export const getForm = async (type: FormType): Promise<ResponseForm> => {
+  const API_URL = getUrl('getDataForm', [{ type: type }]);
+  console.log(API_URL);
   try {
     if (import.meta.env.DEV) {
       const results = (await mockFetchData(data.formMentor)) as ResponseForm;
@@ -106,7 +116,7 @@ export const getFormMentor = async (): Promise<ResponseForm> => {
 export const getProfessions = async (
   value: string
 ): Promise<ResponseProfessions> => {
-  const API_URL = getUrl('getProfessions', { search: value });
+  const API_URL = getUrl('getProfessions', [{ search: value }]);
   try {
     if (import.meta.env.DEV) {
       const results = (await mockFetchData(
@@ -129,12 +139,15 @@ export const getProfessions = async (
   }
 };
 
-export const postFormData = async (data: FormData[]): Promise<IError> => {
+export const postFormData = async (
+  data: FormData[],
+  type: FormType
+): Promise<IError> => {
   const API_URL = getUrl('postFormData');
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: data })
+    body: JSON.stringify({ data: data, type: type })
   };
 
   try {

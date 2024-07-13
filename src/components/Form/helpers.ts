@@ -1,11 +1,5 @@
 ﻿import { TYPES } from './constants';
-import { Poll, FormData } from 'types';
-
-const getRadioButtonChecked = (
-  data: any[],
-  itemId: string,
-  value: string
-) => {};
+import { Poll } from 'types';
 
 const getItemView = (value: string): string => {
   if (value === '') {
@@ -83,61 +77,4 @@ const getValidForm = (values: any, data: Poll[]) => {
   return isValid;
 };
 
-const transformData = (data: any, dataPoll: Poll[]): FormData[] => {
-  const results = [];
-  for (const value in data) {
-    const obj = data[value];
-    if (typeof obj === 'string') {
-      results.push({
-        id: value,
-        entries: [],
-        comments: obj
-      });
-    } else {
-      let questionComment = '';
-      let selectedTextValue = false;
-      const question = dataPoll.find((question) => question.id === value);
-      const entry = question?.entries.find((entry) => entry.weight === 1);
-      if (entry) {
-        const findEntry = obj.find(
-          (o: any) => Object.keys(o)[0] === `_${entry.id}`
-        );
-        if (Object.values(findEntry)[0]) {
-          selectedTextValue = true;
-        }
-      }
-      const tempEntries: [] = obj.map((item: any) => {
-        const objectKeys = Object.keys(item);
-        if (objectKeys[0] === 'text') {
-          if (selectedTextValue) {
-            questionComment = item.text;
-          }
-          return null;
-        } else {
-          const objectValue = item[objectKeys[0]];
-          const objectId = objectKeys[0].slice(1);
-          return {
-            id: objectId,
-            value: objectValue
-          };
-        }
-      });
-
-      const filteredtTempEntries = tempEntries.filter((i) => i !== null);
-      results.push({
-        id: value,
-        entries: filteredtTempEntries,
-        comments: questionComment
-      });
-    }
-  }
-  return results;
-};
-
-export {
-  getRadioButtonChecked,
-  getItemView,
-  getYearOptions,
-  getValidForm,
-  transformData
-};
+export { getItemView, getYearOptions, getValidForm };

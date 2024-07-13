@@ -85,6 +85,10 @@
 
   &__wrapper {
     min-height: 200px;
+
+    &_error {
+      min-height: auto;
+    }
   }
 
   &__item {
@@ -129,6 +133,14 @@
       flex-direction: column;
       gap: 8px;
     }
+  }
+
+  &_request .form__header {
+    background-color: var(--page-color-dark-blue);
+  }
+
+  &_request .form__item_header {
+    color: var(--page-color-dark-blue);
   }
 }
 

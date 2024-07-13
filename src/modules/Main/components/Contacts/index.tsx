@@ -1,10 +1,10 @@
-﻿import { Contact } from 'types';
+﻿// import { Contact } from 'types';
 // import { getLink } from 'helpers';
 import styles from './styles.module.scss';
 
-type Props = {
-  data: Contact;
-};
+// type Props = {
+//   data: Contact;
+// };
 
 const Contacts = () => {
   // const Contacts = ({ data }: Props) => {
