@@ -1,123 +1,42 @@
 ﻿{
   "fetchData": {
     "data": {
-      "programs": [
+      "news": [
         {
-          "title_program": "",
-          "is_diagnostics": "",
-          "is_training": "true",
-          "is_development_plan": "",
-          "is_certification": "",
-          "title_desc": "",
-          "is_button_link": "true",
-          "is_button_file": "",
-          "is_button_message": "",
-          "title_settings": "",
-          "link_page": "/main",
-          "object_file_id": "",
-          "notification_type_id": "",
-          "button_name": "Записаться на тренинг"
-        },
-        {
-          "title_program": "",
-          "is_diagnostics": "",
-          "is_training": "",
-          "is_development_plan": "",
-          "is_certification": "true",
-          "title_desc": "",
-          "is_button_link": "",
-          "is_button_file": "",
-          "is_button_message": "true",
-          "title_settings": "",
-          "link_page": "",
-          "object_file_id": "",
-          "notification_type_id": "7042092618212921995",
-          "button_name": "Записаться на сертификацию"
-        },
-        {
-          "title_program": "",
-          "is_diagnostics": "",
-          "is_training": "",
-          "is_development_plan": "true",
-          "is_certification": "",
-          "title_desc": "",
-          "is_button_link": "",
-          "is_button_file": "true",
-          "is_button_message": "",
-          "title_settings": "",
-          "link_page": "",
-          "object_file_id": "7042721192704733468",
-          "notification_type_id": "",
-          "button_name": "Скачать план развития"
-        },
-        {
-          "title_program": "",
-          "is_diagnostics": "true",
-          "is_training": "false",
-          "is_development_plan": "",
-          "is_certification": "",
-          "title_desc": "",
-          "is_button_link": "false",
-          "is_button_file": "false",
-          "is_button_message": "true",
-          "title_settings": "",
-          "link_page": "",
-          "object_file_id": "",
-          "notification_type_id": "7042432846304095272",
-          "button_name": "Записаться на диагностику"
-        }
-      ],
-      "materials": [
-        {
-          "type": "материал для скачивания",
-          "title": "Эмоциональная смелость",
-          "desc": "Питер Брегман. Манн, Иванов, 2018",
-          "is_download": "true",
-          "link": "http://localhost/download_file.html?file_id=6972734825693151124"
-        },
-        {
-          "type": "издательство АЛЬПИНА",
-          "title": "Эмоциональная смелость",
-          "desc": "Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018",
-          "is_download": "",
+          "image": "https://img2.akspic.ru/attachments/originals/7/1/5/3517-avtomobilnyj_dizajn-gonochnyj_avtomobil-nazemnyj_transport-superkar-motornyj_transport-3840x2160.jpg",
+          "title": "04 ноября 2024",
+          "text": "«Скажи спасибо наставнику» — на выксунском заводе в День учителя стартовала акция",
           "link": "https://ya.ru"
         },
         {
-          "type": "материал для скачивания",
-          "title": "Эмоциональная смелость Эмоциональная смелость Эмоциональная смелость Эмоциональная смелость",
-          "desc": "Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018 Питер Брегман. Манн, Иванов, 2018",
-          "is_download": "true",
-          "link": "http://localhost/download_file.html?file_id=7179197303563902064"
-        }
-      ],
-      "events": [
+          "image": "https://hdpic.club/uploads/posts/2021-12/1640258085_44-hdpic-club-p-mashina-porshe-53.jpg",
+          "title": "",
+          "text": "Описание Описание  Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание",
+          "link": ""
+        },
         {
-          "id": "1111",
-          "name": "Тренинг для тренеров",
-          "start_date": "<div><span class=\"text-m\">Группа 1</span><span class=\"text-s\">20, 27 февраля</span></div>\r\n<div><span class=\"text-m\">Группа 1</span><span class=\"text-s\">20, 27 февраля</span></div>",
-          "time": "09:00-17:00",
-          "photo": "http://localhost/download_file.html?file_id=7165802453038623607",
-          "fullname": "Ирина Гольцова",
-          "position_name": "Ведущий тренер",
-          "desc": "<ul>\r\n<li>asdasdadasd</li>\r\n<li>asdasdadasd22 222</li>\r\n<li>asdasdadasd 333333</li>\r\n</ul>",
-          "link": "ссылка",
-          "title": "Тестовое мероприятие",
-          "start_date_name": "Группа 1",
-          "start_date_desc": "21 сентярбрпя",
-          "time_name": "09-10",
-          "time_desc": "8 часов",
-          "start_time": "<div><span class=\"text-m\">09:00 - 17:00</span><span class=\"text-s\">3 дня по 8 часов</span></div>"
+          "image": "",
+          "title": "11 декабря 2024",
+          "text": "Тестовое описание Тестовое описание Тестовое описание Тестовое описание",
+          "link": ""
+        },
+        {
+          "image": "https://get.wallhere.com/photo/car-vehicle-Dodge-Dodge-Challenger-sports-car-Dodge-Challenger-SRT-green-cars-performance-car-Dodge-Challenger-SRT-Trans-Am-wheel-supercar-land-vehicle-automotive-design-automotive-exterior-race-car-automobile-make-race-track-bumper-muscle-car-155438.jpg",
+          "title": "01 сентября 2024",
+          "text": "Описание описание описание описание",
+          "link": "https://test.ru"
         }
       ],
       "contacts": {
-        "photo": "http://localhost/download_file.html?file_id=7165802453038623607",
-        "fullname": "Петров Иван",
-        "position_name": "Старший аналитик",
-        "email": "@testgggggg.ru"
+        "photo": "/download_file.html?file_id=7098333875333288794",
+        "fullname": "Голубева Ольга",
+        "position_name": "Куратор проекта",
+        "email": "GOLUBEVA_ON@vsw.ru",
+        "phone": "829-6666",
+        "phone_mobile": "8-9109999999"
       },
-      "link_model_competence": "http://localhost/download_file.html?file_id=7042721113247233466",
-      "link_events": "http://localhost/download_file.html?file_id=6972734825693151124",
-      "model_competence_video": ""
+      "link_corporate_competencies_mentor": "/download_file.html?file_id=7049853312861981279",
+      "link_program_training": "/download_file.html?file_id=7049853163063803457"
     },
     "isError": false,
     "errorMessage": ""

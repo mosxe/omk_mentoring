@@ -1,16 +1,15 @@
-﻿// import { Contact } from 'types';
-// import { getLink } from 'helpers';
+﻿import { Contact } from 'types';
+import { getLink } from 'helpers';
 import styles from './styles.module.scss';
 
-// type Props = {
-//   data: Contact;
-// };
+type Props = {
+  data: Contact;
+};
 
-const Contacts = () => {
-  // const Contacts = ({ data }: Props) => {
-  // const linkPhoto = data.photo ? getLink(data.photo) : '';
-  const linkPhoto =
-    'https://yt3.googleusercontent.com/ytc/AGIKgqO4keTzPnSsB4Oo4tnNAaWuoGbN_7eQNk3QrbkYow=s900-c-k-c0x00ffffff-no-rj';
+const Contacts = ({ data }: Props) => {
+  const linkPhoto = data.photo ? getLink(data.photo) : '';
+  const { fullname, position_name, email, phone, phone_mobile } = data;
+
   return (
     <section className={styles.contacts}>
       <div className={styles.contacts__wrapper}>
@@ -29,31 +28,24 @@ const Contacts = () => {
             <img className={styles.contacts__img} src={linkPhoto} alt='Фото' />
           )}
           <div className={styles.contacts__col}>
-            <span className={styles.contacts__text}>Голубева Ольга</span>
-            <span className={styles.contacts__subtext}>Куратор проекта </span>
+            <span className={styles.contacts__text}>{fullname}</span>
+            <span className={styles.contacts__subtext}>{position_name}</span>
             <a
               className={styles.contacts__email}
               type='email'
-              href={`mailto:GOLUBEVA_ON@vsw.ru`}
+              href={`mailto:${email}`}
             >
-              GOLUBEVA_ON@vsw.ru
+              {email}
             </a>
-            {/* <span className={styles.contacts__text}>{data.fullname}</span>
-            <span className={styles.contacts__desc}>{data.position_name}</span> */}
-            {/* <a
-              className={styles.contacts__email}
-              type='email'
-              href={`mailto:${data.email}`}
-            >
-              {data.email}
-            </a> */}
           </div>
           <div
             className={`${styles.contacts__col} ${styles.contacts__col_center}`}
           >
             <span className={styles.contacts__text}>Телефоны</span>
-            <span className={styles.contacts__cont}>829-0322</span>
-            <span className={styles.contacts__cont}>8-9107917160</span>
+            {phone && <span className={styles.contacts__cont}>{phone}</span>}
+            {phone_mobile && (
+              <span className={styles.contacts__cont}>{phone_mobile}</span>
+            )}
           </div>
         </div>
       </div>

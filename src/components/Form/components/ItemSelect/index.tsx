@@ -32,7 +32,6 @@ const ItemSelect = ({ data }: Props) => {
             label: item.name
           }));
           setSelectData(data.data);
-          // setSelectOptions(selectOptions);
           messageRef.current = '';
           callback(selectOptions);
         } else {

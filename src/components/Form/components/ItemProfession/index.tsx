@@ -84,6 +84,7 @@ const ItemProfession = ({ data }: Props) => {
                   onChange={onChange}
                   noOptionsMessage={noOptionsMessage}
                   isArrow={false}
+                  isClearable={true}
                 />
               );
             }}

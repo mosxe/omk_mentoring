@@ -30,7 +30,8 @@ const AsyncSelectReact = (
     isDisabled = false,
     loadOptions,
     innerRef = undefined,
-    isArrow = true
+    isArrow = true,
+    isClearable = false
   } = props;
 
   const DropdownIndicator = (
@@ -81,11 +82,13 @@ const AsyncSelectReact = (
           loadingIndicator: () => styles['loading-hidden'],
           singleValue: () => styles['single-value'],
           loadingMessage: () => styles['select__text-left'],
-          noOptionsMessage: () => styles['select__text-left']
+          noOptionsMessage: () => styles['select__text-left'],
+          clearIndicator: () => styles['select__close']
         }}
         value={value}
         onChange={onChange}
         loadOptions={loadOptions}
+        isClearable={isClearable}
       />
     </>
   );

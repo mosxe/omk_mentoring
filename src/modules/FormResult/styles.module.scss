@@ -1,0 +1,41 @@
+﻿.form-result {
+  margin: 30px auto 20px auto;
+  max-width: 800px;
+  width: 100%;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21.6px;
+    text-align: center;
+    color: var(--page-color-black);
+  }
+
+  &__text {
+    margin: 8px 0px 20px 0px !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.6px;
+    text-align: left;
+    color: var(--page-color-black);
+
+    &_gray {
+      color: var(--page-color-link);
+    }
+  }
+
+  &__link {
+    color: var(--page-color-ligth-blue);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--page-color-red);
+    }
+
+    &:active {
+      color: var(--page-color-link);
+    }
+  }
+}

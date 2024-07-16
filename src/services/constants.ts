@@ -25,7 +25,19 @@ const initialForm = {
 };
 
 const initialData = {
-  data: [],
+  data: {
+    news: [],
+    contacts: {
+      photo: '',
+      fullname: '',
+      position_name: '',
+      email: '',
+      phone: '',
+      phone_mobile: ''
+    },
+    link_corporate_competencies_mentor: '',
+    link_program_training: ''
+  },
   isError: false,
   errorMessage: ''
 };

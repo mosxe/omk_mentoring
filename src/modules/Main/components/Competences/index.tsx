@@ -1,12 +1,14 @@
-﻿import styles from './styles.module.scss';
+﻿import { getLinkFile } from 'helpers';
+import styles from './styles.module.scss';
 
-const Competences = () => {
-  const link = '12312';
+type Props = {
+  link: string;
+};
 
+const Competences = ({ link }: Props) => {
   const handleClick = (isProgram?: boolean) => {
-    // const linkFile = getLinkFile(link);
     let linkName = 'Корпоративные компетенции наставника';
-    let linkFile = '12312';
+    let linkFile = getLinkFile(link);
     if (isProgram) {
       linkName = 'Программа развития наставников';
       linkFile = '33333';

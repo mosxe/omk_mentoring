@@ -28,30 +28,6 @@ const ItemRadio = ({ data }: Props) => {
               />
             );
           })}
-          {/* <RadioButton
-            name='KEKES'
-            onChange={onChange}
-            // {...register('radio')}
-            checked={value === 'A'}
-            type='radio'
-            // value='A'
-          />
-          <RadioButton
-            name='KEKES'
-            onChange={onChange}
-            // {...register('radio')}
-            checked={value === 'B'}
-            type='radio'
-            // value='B'
-          />
-          <RadioButton
-            name='KEKES'
-            onChange={onChange}
-            // {...register('radio')}
-            checked={value === 'C'}
-            // type='radio'
-            value='C'
-          /> */}
         </>
       )}
     />

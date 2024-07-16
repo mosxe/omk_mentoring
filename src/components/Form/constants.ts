@@ -23,51 +23,51 @@
 
 export const MONTHS = [
   {
-    value: 0,
+    value: '01',
     label: 'январь'
   },
   {
-    value: 1,
+    value: '02',
     label: 'февраль'
   },
   {
-    value: 2,
+    value: '03',
     label: 'март'
   },
   {
-    value: 3,
+    value: '04',
     label: 'апрель'
   },
   {
-    value: 4,
+    value: '05',
     label: 'май'
   },
   {
-    value: 5,
+    value: '06',
     label: 'июнь'
   },
   {
-    value: 6,
+    value: '07',
     label: 'июль'
   },
   {
-    value: 7,
+    value: '08',
     label: 'август'
   },
   {
-    value: 8,
+    value: '09',
     label: 'сентябрь'
   },
   {
-    value: 9,
+    value: '10',
     label: 'октябрь'
   },
   {
-    value: 10,
+    value: '11',
     label: 'ноябрь'
   },
   {
-    value: 11,
+    value: '12',
     label: 'декабрь'
   }
 ];

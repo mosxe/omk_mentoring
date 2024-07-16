@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error from 'components/Error';
 import MainPage from './pages/Main';
+import FormResult from './pages/FormResult';
 import ErrorPage from './pages/Error';
 import { register } from 'swiper/element/bundle';
 import './index.css';
@@ -14,11 +15,11 @@ const router = createBrowserRouter([
     element: <MainPage />,
     errorElement: <Error />
   },
-  // {
-  //   path: '/omk_mentoring/:id',
-  //   element: <MaterialPage />,
-  //   errorElement: <Error />
-  // },
+  {
+    path: '/omk_mentoring/:id',
+    element: <FormResult />,
+    errorElement: <Error />
+  },
   {
     path: '*',
     element: <ErrorPage />

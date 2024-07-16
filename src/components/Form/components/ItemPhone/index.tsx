@@ -1,7 +1,6 @@
 ﻿import { useFormContext, Controller } from 'react-hook-form';
 import Input from 'components/Input';
 import { Poll } from 'types';
-// import styles from './styles.module.scss';
 
 type Props = {
   data: Poll;

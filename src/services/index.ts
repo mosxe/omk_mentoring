@@ -172,32 +172,25 @@ export const postFormData = async (
   }
 };
 
-// export const sendRequest = async (data: Request): Promise<IError> => {
-//   const API_URL = getUrl('sendRequest');
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(data)
-//   };
+export const getFormResult = async (id: string): Promise<ResponseForm> => {
+  const API_URL = getUrl('getFormResult', [{ id: id }]);
 
-//   try {
-//     if (import.meta.env.DEV) {
-//       const results = (await mockFetchData({
-//         isError: false,
-//         errorMessage: ''
-//       })) as IError;
-//       return results;
-//     }
+  try {
+    if (import.meta.env.DEV) {
+      const results = (await mockFetchData(data.formMentor)) as ResponseForm;
+      return results;
+    }
 
-//     const response = await fetch(API_URL, requestOptions);
+    const response = await fetch(API_URL);
 
-//     if (!response.ok) {
-//       throw Error(response.statusText);
-//     }
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
 
-//     const json = await response.json();
-//     return json;
-//   } catch (e) {
-//     return { isError: true, errorMessage: '' };
-//   }
-// };
+    const json = await response.json();
+    return json;
+  } catch (e) {
+    initialForm.isError = true;
+    return initialForm;
+  }
+};

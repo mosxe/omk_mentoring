@@ -121,11 +121,11 @@ const Main = () => {
         <Knowledge onClickSection={handleClickSection} />
         <Reference />
         <Mentor ref={mentorRef} />
-        <Competences />
-        <Support ref={supportRef} />
+        <Competences link={data.data.link_corporate_competencies_mentor} />
+        <Support ref={supportRef} link={data.data.link_program_training} />
         <Profitable ref={profitableRef} />
         <Starting ref={startingRef} />
-        <Contacts />
+        <Contacts data={data.data.contacts} />
       </main>
       <Footer />
       <Alert />

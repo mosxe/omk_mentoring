@@ -11,11 +11,15 @@ import Image2 from 'assets/svg/Support/sup_2.svg';
 import Image3 from 'assets/svg/Support/sup_3.svg';
 import { ResponseForm } from 'types';
 import { getForm, postFormData } from 'services';
-import { transformData } from 'helpers';
+import { transformData, getLinkFile } from 'helpers';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
-const Support = forwardRef<HTMLDivElement>((_, ref) => {
+type Props = {
+  link: string;
+};
+
+const Support = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
   const [isShowModal, setShowModal] = useState<boolean>(false);
   const [data, setData] = useState<ResponseForm>(initialForm);
   const [isLoading, setLoading] = useState<boolean>(true);
@@ -51,6 +55,17 @@ const Support = forwardRef<HTMLDivElement>((_, ref) => {
         })
         .finally(() => setLoading(false));
     }
+  };
+
+  const onDownloadFile = () => {
+    const linkName = 'Модуль 1. Технология наставничества';
+    const linkFile = getLinkFile(link);
+    const a = document.createElement('a');
+    a.href = linkFile;
+    a.download = linkName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   const onSubmit = (dataForm: Record<string, string | boolean>) => {
@@ -89,7 +104,7 @@ const Support = forwardRef<HTMLDivElement>((_, ref) => {
               <div className={styles.support__text_b}>Обучение</div>
               <div className={styles.support__text}>
                 Обучение по программе развития наставников{' '}
-                <span className={styles.support__link}>
+                <span className={styles.support__link} onClick={onDownloadFile}>
                   «Модуль 1. Технология наставничества»
                 </span>
                 .

@@ -11,12 +11,13 @@ import styles from './styles.module.scss';
 
 type Props = {
   data: ResponseForm;
-  title: string;
+  title?: string;
   isRequest?: boolean;
   isLoading: boolean;
   isLoadingContent: boolean;
   isError: boolean;
   onSubmit: (data: Record<string, string | boolean>) => void;
+  isResult?: boolean;
 };
 const Form = ({
   data,
@@ -25,8 +26,10 @@ const Form = ({
   isLoading,
   isLoadingContent,
   isError,
-  onSubmit
+  onSubmit,
+  isResult = false
 }: Props) => {
+  console.log(data);
   const [isDisabledForm, setDisabledForm] = useState<boolean>(true);
   const methods = useForm();
 
@@ -51,7 +54,7 @@ const Form = ({
   if (isLoading) {
     return (
       <form className={clssNameForm}>
-        <Header title={title} isRequest={isRequest} />
+        {title && <Header title={title} isRequest={isRequest} />}
         <div className={styles.form__wrapper}>
           <Loader />
         </div>
@@ -62,7 +65,7 @@ const Form = ({
   if (isError || data.isError) {
     return (
       <form className={clssNameForm}>
-        <Header title={title} isRequest={isRequest} />
+        {title && <Header title={title} isRequest={isRequest} />}
         <div
           className={`${styles.form__wrapper} ${styles.form__wrapper_error}`}
         >
@@ -80,11 +83,13 @@ const Form = ({
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           {isLoadingContent && <LoaderContent />}
-          <Header title={title} isRequest={isRequest} />
-          <div className={styles.form__text}>
-            Уважаемый коллега, просим Вас ответить на {data.data.length}{' '}
-            вопросов анкеты
-          </div>
+          {title && <Header title={title} isRequest={isRequest} />}
+          {!isResult && (
+            <div className={styles.form__text}>
+              Уважаемый коллега, просим Вас ответить на {data.data.length}{' '}
+              вопросов анкеты
+            </div>
+          )}
           {data.data.map((item, index) => (
             <Item data={item} person={data.person} index={index} key={index} />
           ))}

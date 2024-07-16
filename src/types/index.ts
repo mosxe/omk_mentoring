@@ -15,8 +15,29 @@ export interface ResponseSearchCollaborators extends Error {
   data: SearchCollaborator[];
 }
 
+export interface New {
+  image: string;
+  title: string;
+  text: string;
+  link: string;
+}
+
+export interface Contact {
+  photo: string;
+  fullname: string;
+  position_name: string;
+  email: string;
+  phone: string;
+  phone_mobile: string;
+}
+
 export interface ResponseData extends Error {
-  data: any;
+  data: {
+    news: New[];
+    contacts: Contact;
+    link_corporate_competencies_mentor: string;
+    link_program_training: string;
+  };
 }
 
 export interface Entry {

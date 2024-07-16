@@ -29,7 +29,7 @@ const transformData = (data: any): FormData[] => {
         const tempEntries = obj.map((item: any) => {
           const objectKeys = Object.keys(item);
           if (objectKeys[0] === 'value') {
-            if (item.value !== undefined) {
+            if (item.value !== undefined && item.value !== null) {
               return item.value.value;
             }
           } else {
@@ -48,10 +48,10 @@ const transformData = (data: any): FormData[] => {
           value: tempStr
         });
       } else if (obj?.month !== undefined && obj?.year !== undefined) {
-        const dateValue = new Date(obj.year.value, obj.month.value, 1);
+        const dateValue = `${obj.year.value}-${obj.month.value}-01`;
         results.push({
           id: value,
-          value: dateValue.toString()
+          value: dateValue
         });
       } else if (obj?.value !== undefined) {
         results.push({
@@ -59,30 +59,6 @@ const transformData = (data: any): FormData[] => {
           value: obj.value
         });
       }
-
-      // const tempEntries: [] = obj.map((item: any) => {
-      //   const objectKeys = Object.keys(item);
-      //   if (objectKeys[0] === 'text') {
-      //     if (selectedTextValue) {
-      //       questionComment = item.text;
-      //     }
-      //     return null;
-      //   } else {
-      //     const objectValue = item[objectKeys[0]];
-      //     const objectId = objectKeys[0].slice(1);
-      //     return {
-      //       id: objectId,
-      //       value: objectValue
-      //     };
-      //   }
-      // });
-
-      // const filteredtTempEntries = tempEntries.filter((i) => i !== null);
-      // results.push({
-      //   id: value,
-      //   entries: filteredtTempEntries,
-      //   comments: questionComment
-      // });
     }
   }
   return results;

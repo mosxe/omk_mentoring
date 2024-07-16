@@ -42,7 +42,10 @@ const getValidForm = (values: any, data: Poll[]) => {
         case '3':
           {
             const hasValue = obj.find(
-              (item: any) => item.value !== undefined && item.value.value !== ''
+              (item: any) =>
+                item.value !== undefined &&
+                item.value !== null &&
+                item.value.value !== ''
             );
             if (hasValue === undefined) {
               isValid = false;
