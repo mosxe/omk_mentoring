@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -6,64 +6,28 @@ import Loader from 'components/Loader';
 import Error from 'components/Error';
 import Alert from 'components/Alert';
 import Form from 'components/Form';
-import { ResponseForm } from 'types';
-import { getFormResult } from 'services';
-import { initialForm } from 'services/constants';
+import Popap from 'components/Popap';
+import { PopapAlert } from 'components/Popap';
+import { toast } from 'react-toastify';
+import { ResponseFormResult } from 'types';
+import { getFormResult, postFormData } from 'services';
+import { initialFormResult } from 'services/constants';
+import { transformData } from 'helpers';
 import stylesMain from 'modules/Main/styles.module.scss';
 import styles from './styles.module.scss';
 
 const FormResult = () => {
   const { id } = useParams();
-  const [data, setData] = useState<ResponseForm>(initialForm);
+  const [data, setData] = useState<ResponseFormResult>(initialFormResult);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isLoadingContent, setLoadingContent] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
+  const [isShowPopap, setShowPopap] = useState<boolean>(false);
+  const [isDoneForm, setDoneForm] = useState<boolean>(false);
 
-  const handleClickSection = useCallback((section: string) => {
-    const headerHeight = 64;
-    let scrollPosY = null;
-
-    switch (section) {
-      case 'starting':
-        scrollPosY = startingRef.current
-          ? startingRef.current.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight
-          : null;
-        break;
-      case 'mentor':
-        scrollPosY = mentorRef.current
-          ? mentorRef.current.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight
-          : null;
-        break;
-      case 'support':
-        scrollPosY = supportRef.current
-          ? supportRef.current.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight
-          : null;
-        break;
-      case 'profitable':
-        scrollPosY = profitableRef.current
-          ? profitableRef.current.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight
-          : null;
-        break;
-      default:
-        break;
-    }
-    if (scrollPosY !== null) {
-      window.scrollTo({
-        top: scrollPosY,
-        behavior: 'smooth'
-      });
-    }
-  }, []);
-
-  const type = '1';
+  const onShowPopap = () => {
+    setShowPopap(!isShowPopap);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -81,6 +45,60 @@ const FormResult = () => {
       })
       .finally(() => setLoading(false));
   }, []);
+
+  const onSubmit = (dataForm: Record<string, string | boolean>) => {
+    setLoadingContent(true);
+    const formData = transformData(dataForm);
+    postFormData(formData, data.type, id)
+      .then((res) => {
+        if (res.isError) {
+          toast('Произошла ошибка');
+        } else {
+          setShowPopap(true);
+          setDoneForm(true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        toast('Произошла ошибка');
+      })
+      .finally(() => setLoadingContent(false));
+  };
+
+  const Text = () => {
+    if (data.type === 'manager_mentor') {
+      return (
+        <p className={styles['form-result__text']}>
+          Ваш сотрудник{' '}
+          <span className={styles['form-result__text_gray']}>
+            {data.person.lastname} {data.person.firstname}{' '}
+            {data.person.middlename}, {data.person.position}
+          </span>
+          , направил в адрес корпоративного университета заявку о желании стать
+          наставником по рабочей профессии. Просим Вас заполнить небольшую
+          анкету об этом сотруднике, чтобы оценить потенциал кандидата в роли
+          наставника.
+        </p>
+      );
+    }
+    return (
+      <p className={styles['form-result__text']}>
+        Ваш сотрудник{' '}
+        <span className={styles['form-result__text_gray']}>
+          {data.person.lastname} {data.person.firstname}{' '}
+          {data.person.middlename}, {data.person.position}
+        </span>
+        , направил в адрес корпоративного университета заявку о желании принять
+        участие в{' '}
+        <span className={styles['form-result__link']}>
+          тренинге для наставников
+        </span>
+        . Просим Вас заполнить небольшую анкету об этом сотруднике, чтобы
+        подтвердить, что он является наставником, а также оценить его
+        компетенции для этой роли.
+      </p>
+    );
+  };
 
   if (isLoading) {
     return (
@@ -106,38 +124,30 @@ const FormResult = () => {
     );
   }
 
-  const Text = () => {
-    if (type === '1') {
-      return (
-        <p className={styles['form-result__text']}>
-          Ваш сотрудник{' '}
-          <span className={styles['form-result__text_gray']}>
-            Фамилия Имя Отчество, должность
-          </span>
-          , направил в адрес корпоративного университета заявку о желании стать
-          наставником по рабочей профессии. Просим Вас заполнить небольшую
-          анкету об этом сотруднике, чтобы оценить потенциал кандидата в роли
-          наставника.
-        </p>
-      );
-    }
+  if (data.is_done || isDoneForm) {
     return (
-      <p className={styles['form-result__text']}>
-        Ваш сотрудник{' '}
-        <span className={styles['form-result__text_gray']}>
-          Фамилия Имя Отчество, должность
-        </span>
-        , направил в адрес корпоративного университета заявку о желании принять
-        участие в{' '}
-        <span className={styles['form-result__link']}>
-          тренинге для наставников
-        </span>
-        . Просим Вас заполнить небольшую анкету об этом сотруднике, чтобы
-        подтвердить, что он является наставником, а также оценить его
-        компетенции для этой роли.
-      </p>
+      <>
+        <Header />
+        <main className={stylesMain.main}>
+          <div className={styles['form-result']}>
+            <div className={styles['form-result__title']}>
+              Уважаемый, {data.collaborator.firstname}{' '}
+              {data.collaborator.middlename}!
+            </div>
+            <p className={styles['form-result__text']}>
+              Вы заполнили анкету по сотруднику{' '}
+              <span className={styles['form-result__text_gray']}>
+                {data.person.lastname} {data.person.firstname}{' '}
+                {data.person.middlename}, {data.person.position}
+              </span>
+              .
+            </p>
+          </div>
+        </main>
+        <Footer />
+      </>
     );
-  };
+  }
 
   return (
     <>
@@ -145,7 +155,8 @@ const FormResult = () => {
       <main className={stylesMain.main}>
         <div className={styles['form-result']}>
           <div className={styles['form-result__title']}>
-            Уважаемый, Имя Отчество!
+            Уважаемый, {data.collaborator.firstname}{' '}
+            {data.collaborator.middlename}!
           </div>
           <Text />
           <Form
@@ -153,13 +164,19 @@ const FormResult = () => {
             isLoadingContent={isLoadingContent}
             isError={isError}
             data={data}
-            onSubmit={() => console.log(123)}
+            onSubmit={onSubmit}
             isResult={true}
           />
         </div>
       </main>
       <Footer />
       <Alert />
+      <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
+        <PopapAlert
+          type={data.type === 'person_mentor' ? 'mentor' : 'training'}
+          isShowText={false}
+        />
+      </Popap>
     </>
   );
 };

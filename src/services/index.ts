@@ -5,6 +5,7 @@ import {
   ResponseForm,
   ResponseProfessions,
   FormData,
+  ResponseFormResult,
   FormType,
   Error as IError
 } from 'types';
@@ -12,7 +13,9 @@ import {
   initialSearchCollaborators,
   initialProfessions,
   initialForm,
-  initialData
+  initialData,
+  initialFormResult,
+  TEMPLATE_ID
 } from './constants';
 
 const getUrl = (action: string, params?: any[]) => {
@@ -39,8 +42,6 @@ const mockFetchData = (data: any) => {
     return setTimeout(() => resolve(data), 1500);
   });
 };
-
-const TEMPLATE_ID = '7046926645625566409';
 
 export const getData = async (): Promise<ResponseData> => {
   const API_URL = getUrl('getData');
@@ -141,13 +142,14 @@ export const getProfessions = async (
 
 export const postFormData = async (
   data: FormData[],
-  type: FormType
+  type: FormType,
+  id?: string
 ): Promise<IError> => {
   const API_URL = getUrl('postFormData');
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: data, type: type })
+    body: JSON.stringify({ data: data, type: type, id: id ?? '' })
   };
 
   try {
@@ -172,12 +174,16 @@ export const postFormData = async (
   }
 };
 
-export const getFormResult = async (id: string): Promise<ResponseForm> => {
+export const getFormResult = async (
+  id: string
+): Promise<ResponseFormResult> => {
   const API_URL = getUrl('getFormResult', [{ id: id }]);
 
   try {
     if (import.meta.env.DEV) {
-      const results = (await mockFetchData(data.formMentor)) as ResponseForm;
+      const results = (await mockFetchData(
+        data.formManager
+      )) as ResponseFormResult;
       return results;
     }
 
@@ -190,7 +196,7 @@ export const getFormResult = async (id: string): Promise<ResponseForm> => {
     const json = await response.json();
     return json;
   } catch (e) {
-    initialForm.isError = true;
-    return initialForm;
+    initialFormResult.isError = true;
+    return initialFormResult as ResponseFormResult;
   }
 };

@@ -48,7 +48,6 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
   const onSubmit = (dataForm: Record<string, string | boolean>) => {
     setLoadingContent(true);
     const formData = transformData(dataForm);
-    console.log(formData);
     postFormData(formData, 'person_mentor')
       .then((res) => {
         if (res.isError) {

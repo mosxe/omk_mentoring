@@ -11,23 +11,23 @@ import { Poll, Collaborator } from 'types';
 type Props = {
   data: Poll;
   person: Collaborator;
-  index: number;
+  header: string;
 };
 
-const Item = ({ data, person, index }: Props) => {
+const Item = ({ data, person, header }: Props) => {
   const { register, control } = useFormContext();
   const itemView = getItemView(data.view);
 
   if (itemView) {
     return (
-      <ItemContainer title={data.title} index={index}>
+      <ItemContainer header={header} title={data.title}>
         <ItemViewContainer data={data} person={person} view={itemView} />
       </ItemContainer>
     );
   }
 
   return (
-    <ItemContainer title={data.title} index={index}>
+    <ItemContainer header={header} title={data.title}>
       {data.type === 'text' && (
         <Controller
           control={control}

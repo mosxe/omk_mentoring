@@ -9,17 +9,18 @@ import News from './components/News';
 import Image1 from 'assets/svg/Support/sup_1.svg';
 import Image2 from 'assets/svg/Support/sup_2.svg';
 import Image3 from 'assets/svg/Support/sup_3.svg';
-import { ResponseForm } from 'types';
+import { ResponseForm, New } from 'types';
 import { getForm, postFormData } from 'services';
 import { transformData, getLinkFile } from 'helpers';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
 type Props = {
+  news: New[];
   link: string;
 };
 
-const Support = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
+const Support = forwardRef<HTMLDivElement, Props>(({ news, link }, ref) => {
   const [isShowModal, setShowModal] = useState<boolean>(false);
   const [data, setData] = useState<ResponseForm>(initialForm);
   const [isLoading, setLoading] = useState<boolean>(true);
@@ -129,7 +130,7 @@ const Support = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
                 наставников и награждение благодарственными письмами,
                 приуроченной ко дню учителя.
               </div>
-              <News />
+              <News data={news} />
             </div>
           </div>
           <div className={styles.support__box}>

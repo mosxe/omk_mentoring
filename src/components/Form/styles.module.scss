@@ -133,6 +133,13 @@
       flex-direction: column;
       gap: 8px;
     }
+
+    &_desc {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21.6px;
+      color: var(--page-color-link);
+    }
   }
 
   &_request .form__header {

@@ -122,7 +122,11 @@ const Main = () => {
         <Reference />
         <Mentor ref={mentorRef} />
         <Competences link={data.data.link_corporate_competencies_mentor} />
-        <Support ref={supportRef} link={data.data.link_program_training} />
+        <Support
+          news={data.data.news}
+          ref={supportRef}
+          link={data.data.link_program_training}
+        />
         <Profitable ref={profitableRef} />
         <Starting ref={startingRef} />
         <Contacts data={data.data.contacts} />

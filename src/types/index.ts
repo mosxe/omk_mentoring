@@ -65,6 +65,7 @@ export interface Collaborator {
 export interface ResponseForm extends Error {
   data: Poll[];
   person: Collaborator;
+  collaborator: null;
 }
 
 export interface ResponseProfessions extends Error {
@@ -72,6 +73,14 @@ export interface ResponseProfessions extends Error {
     value: string;
     label: string;
   }[];
+}
+
+export interface ResponseFormResult extends Error {
+  data: Poll[];
+  person: Collaborator;
+  collaborator: Collaborator;
+  type: FormType;
+  is_done: boolean;
 }
 
 export interface FormData {

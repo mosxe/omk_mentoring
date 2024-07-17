@@ -2,15 +2,16 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import Header from './components/Header';
 import Item from './components/Item';
+import ItemContainer from './components/ItemContainer';
 import Loader from 'components/Loader';
 import { LoaderContent } from 'components/Loader';
 import Error from 'components/Error';
-import { ResponseForm } from 'types';
+import { ResponseFormResult, ResponseForm } from 'types';
 import { getValidForm } from './helpers';
 import styles from './styles.module.scss';
 
 type Props = {
-  data: ResponseForm;
+  data: ResponseForm | ResponseFormResult;
   title?: string;
   isRequest?: boolean;
   isLoading: boolean;
@@ -29,7 +30,6 @@ const Form = ({
   onSubmit,
   isResult = false
 }: Props) => {
-  console.log(data);
   const [isDisabledForm, setDisabledForm] = useState<boolean>(true);
   const methods = useForm();
 
@@ -90,9 +90,28 @@ const Form = ({
               вопросов анкеты
             </div>
           )}
-          {data.data.map((item, index) => (
-            <Item data={item} person={data.person} index={index} key={index} />
-          ))}
+          {data.data.map((item, index) => {
+            const header = `Вопрос ${index + 1}`;
+            return (
+              <Item
+                data={item}
+                person={data.person}
+                header={header}
+                key={index}
+              />
+            );
+          })}
+          {isResult && (
+            <ItemContainer header='Руководитель' title=''>
+              <div className={styles.form__item_desc}>
+                <span>
+                  <strong>{`${data.collaborator?.lastname} ${data.collaborator?.firstname} ${data.collaborator?.middlename}`}</strong>
+                </span>
+                , {data.collaborator?.position} ({data.collaborator?.tab_number}
+                ), {data.collaborator?.subdivision}
+              </div>
+            </ItemContainer>
+          )}
           <button
             type='submit'
             className={styles.form__btn}

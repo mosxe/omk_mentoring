@@ -15,7 +15,6 @@
 
   &__wrapper {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
     margin-top: 50px;
   }
@@ -63,58 +62,63 @@
   }
 }
 
-// @media screen and (max-width: 960px) {
-//   .advantages {
-//     margin: 50px 0px;
-//   }
+@media screen and (max-width: 960px) {
+  .knowledge {
+    margin: 50px 0px;
+  }
 
-//   .advantages__wrapper {
-//     margin-top: 30px;
-//   }
+  .knowledge__wrapper {
+    margin-top: 30px;
+  }
 
-//   .advantages__card {
-//     flex-direction: column;
+  .knowledge__card {
+    flex-direction: column;
 
-//     &_img {
-//       align-self: center;
-//     }
-//   }
-// }
+    &_text {
+      text-align: center;
+    }
 
-// @media screen and (max-width: 767px) {
-//   .advantages {
-//     margin: 36px 0px;
+    &_img {
+      align-self: center;
+    }
+  }
+}
 
-//     &__title {
-//       font-size: 28px;
-//       line-height: 32px;
-//     }
+@media screen and (max-width: 767px) {
+  .knowledge {
+    margin: 36px 0px;
 
-//     &__card {
-//       padding: 24px 20px;
-//       width: 100%;
-//       flex-basis: 100%;
-//     }
-//   }
-// }
+    &__title {
+      font-size: 28px;
+      line-height: 32px;
+    }
 
-// @media screen and (max-width: 576px) {
-//   .advantages__title {
-//     font-size: 20px;
-//     line-height: 24px;
-//   }
+    &__card {
+      padding: 24px 20px;
+      width: 100%;
+      flex-basis: 100%;
+    }
+  }
+}
 
-//   .advantages__text {
-//     font-size: 18px;
-//     line-height: 23.8px;
-//   }
+@media screen and (max-width: 576px) {
+  .knowledge__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
 
-//   .advantages__wrapper {
-//     margin-top: 16px;
-//   }
+  .knowledge__text {
+    font-size: 18px;
+    line-height: 23.8px;
+  }
 
-//   .advantages__card_title {
-//     font-size: 16px;
-//     line-height: 21.6px;
-//   }
-// }
+  .knowledge__wrapper {
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .knowledge__card_title {
+    font-size: 16px;
+    line-height: 21.6px;
+  }
+}
