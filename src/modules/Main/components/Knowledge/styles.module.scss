@@ -107,18 +107,22 @@
     line-height: 24px;
   }
 
-  .knowledge__text {
-    font-size: 18px;
-    line-height: 23.8px;
-  }
-
   .knowledge__wrapper {
     margin-top: 16px;
     flex-wrap: wrap;
   }
 
+  .knowledge__card {
+    padding: 16px;
+  }
+
   .knowledge__card_title {
     font-size: 16px;
     line-height: 21.6px;
+  }
+
+  .knowledge__card_text {
+    font-size: 16px;
+    line-height: 20.8px;
   }
 }

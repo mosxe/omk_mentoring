@@ -81,18 +81,6 @@
     }
   }
 
-  // &_row {
-  //   display: flex;
-  //   gap: 5px;
-  // }
-
-  // &_text-red {
-  //   font-size: 16px;
-  //   font-weight: 700;
-  //   line-height: 21.6px;
-  //   color: var(--page-color-red);
-  // }
-
   &__border-t {
     border-top: none !important;
   }
@@ -100,14 +88,6 @@
   &__border-b {
     border-bottom: none !important;
   }
-
-  // &_padding-a {
-  //   padding: 0px 20px 10px 20px !important;
-  // }
-
-  // &_padding-b {
-  //   padding: 0px 0px 20px 0px !important;
-  // }
 
   & table {
     width: 100%;

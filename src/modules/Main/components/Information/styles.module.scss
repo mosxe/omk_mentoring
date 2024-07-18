@@ -109,17 +109,21 @@
     line-height: 24px;
   }
 
-  .information__text {
-    font-size: 18px;
-    line-height: 23.8px;
-  }
-
   .information__wrapper {
     margin-top: 16px;
+  }
+
+  .information__card {
+    padding: 16px;
   }
 
   .information__card_title {
     font-size: 16px;
     line-height: 21.6px;
+  }
+
+  .information__card_text {
+    font-size: 16px;
+    line-height: 20.8px;
   }
 }

@@ -125,7 +125,9 @@ const Support = forwardRef<HTMLDivElement, Props>(({ news, link }, ref) => {
               <div className={styles.support__text_b}>
                 Профессиональное сообщество
               </div>
-              <div className={styles.support__text}>
+              <div
+                className={`${styles.support__text} ${styles.support__text_m}`}
+              >
                 Конкурсы, слеты для наставников, признание деятельности
                 наставников и награждение благодарственными письмами,
                 приуроченной ко дню учителя.

@@ -35,16 +35,15 @@ const News = ({ data }: Props) => {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          slidesPerView={3}
+          slidesPerView={1}
           speed={300}
           autoHeight={false}
-          spaceBetween={30}
+          spaceBetween={10}
           className={styles['news__wrapper']}
           modules={[Navigation, Scrollbar, A11y]}
           onSlideChange={(swiper) => {
             setActiveSlider(swiper.activeIndex);
           }}
-          allowTouchMove={false}
           navigation={{
             nextEl: styles['news__bullet'],
             prevEl: styles['news__bullet']
@@ -59,6 +58,10 @@ const News = ({ data }: Props) => {
               spaceBetween: 20
             },
             1024: {
+              slidesPerView: 3,
+              spaceBetween: 20
+            },
+            1240: {
               slidesPerView: 3,
               spaceBetween: 30
             }

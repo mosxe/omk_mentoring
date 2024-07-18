@@ -57,6 +57,12 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .header__title {
+    font-size: 56px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .header {
     max-height: 100%;

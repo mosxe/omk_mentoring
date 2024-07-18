@@ -60,6 +60,10 @@
       line-height: 23.4px;
       letter-spacing: 1px;
     }
+
+    &_m {
+      max-width: 920px;
+    }
   }
 
   &__link {
@@ -78,72 +82,88 @@
   }
 }
 
-// @media screen and (max-width: 960px) {
-//   .support {
-//     margin: 50px 0px;
-//   }
-// }
+@media screen and (max-width: 960px) {
+  .support {
+    margin: 50px 0px;
 
-// @media screen and (max-width: 767px) {
-//   .support {
-//     margin: 36px 0px;
+    &__wrapper {
+      padding: 40px 60px 40px 40px;
+    }
 
-//     &__title {
-//       font-size: 28px;
-//       line-height: 32px;
-//       margin-bottom: 32px !important;
-//     }
+    &__text_m {
+      max-width: 700px;
+      padding-right: 60px;
+    }
+  }
+}
 
-//     &__wrapper {
-//       padding: 36px 28px;
-//     }
+@media screen and (max-width: 767px) {
+  .support {
+    margin: 36px 0px;
 
-//     &__row {
-//       gap: 30px;
-//     }
+    &__title {
+      font-size: 28px;
+      line-height: 32px;
+    }
 
-//     &__card {
-//       padding: 20px 10px;
-//       align-items: center;
+    &__container {
+      flex-direction: column;
+      gap: 16px;
+    }
 
-//       &_title {
-//         text-align: center;
-//       }
+    &__wrapper {
+      padding: 24px 64px 24px 24px;
+    }
 
-//       &_text {
-//         text-align: center;
-//       }
-//     }
-//   }
-// }
+    .support__box_m {
+      margin: 0px;
+    }
 
-// @media screen and (max-width: 576px) {
-//   .support__title {
-//     font-size: 20px;
-//     line-height: 24px;
-//     margin-bottom: 24px !important;
-//   }
+    &__img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
 
-//   .support__wrapper {
-//     padding: 24px 16px;
-//   }
+@media screen and (max-width: 576px) {
+  .support__title {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 16px !important;
+  }
 
-//   .support__row {
-//     flex-direction: column;
-//     gap: 16px;
-//   }
+  .support__wrapper {
+    padding: 16px;
+  }
 
-//   .support__card {
-//     padding: 16px 0px;
+  .support__box {
+    flex-direction: column;
+    padding: 16px 0px 0px 0px;
+    gap: 16px;
 
-//     &_title {
-//       font-size: 16px;
-//       line-height: 21.6px;
-//     }
+    &_m {
+      margin: 0px 0px 14px 0px;
+    }
+  }
 
-//     &_text {
-//       font-size: 16px;
-//       line-height: 20.8px;
-//     }
-//   }
-// }
+  .support__img {
+    align-self: center;
+    width: 60px;
+    height: 60px;
+  }
+
+  .support__text {
+    font-size: 16px;
+    line-height: 21.6px;
+
+    &_b {
+      font-size: 18px;
+    }
+
+    &_m {
+      max-width: none;
+      padding-right: 0px;
+    }
+  }
+}

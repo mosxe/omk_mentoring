@@ -22,7 +22,6 @@
 
   &__container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
   }
@@ -153,6 +152,7 @@
 
         &:last-child {
           border-right: 1px solid var(--page-color-link);
+          min-width: 430px;
         }
       }
 
@@ -204,80 +204,72 @@
   }
 }
 
-// @media screen and (max-width: 980px) {
-//   .criteria__subtitle {
-//     margin-top: 16px;
-//   }
-// }
+@media screen and (max-width: 960px) {
+  .competences {
+    margin: 50px 0px;
 
-// @media screen and (max-width: 960px) {
-//   .criteria {
-//     margin: 50px 0px;
-//   }
+    &__wrapper {
+      padding: 40px;
+    }
+  }
+}
 
-//   .criteria__wrapper {
-//     padding: 40px;
-//   }
+@media screen and (max-width: 767px) {
+  .competences {
+    margin: 36px 0px;
 
-//   .criteria__container {
-//     gap: 30px;
-//     margin-top: 30px;
-//   }
+    &__title {
+      font-size: 28px;
+      line-height: 32px;
+    }
 
-//   .criteria__card {
-//     padding: 40px 30px;
-//     flex-basis: calc(50% - 15px);
-//   }
-// }
+    &__container {
+      flex-direction: column;
+      gap: 16px;
+    }
 
-// @media screen and (max-width: 767px) {
-//   .criteria {
-//     margin: 36px 0px;
+    &__wrapper {
+      padding: 24px;
+    }
 
-//     &__title {
-//       font-size: 28px;
-//       line-height: 32px;
-//     }
+    &__text {
+      margin-top: 20px;
+      font-size: 22px;
+      line-height: 29.2px;
+    }
 
-//     &__container {
-//       margin-top: 30px;
-//       flex-direction: column;
-//     }
+    &__table table th:last-child {
+      width: 300px;
+      min-width: 300px;
+    }
+  }
+}
 
-//     &__card {
-//       padding: 32px 24px;
-//     }
-//   }
-// }
+@media screen and (max-width: 576px) {
+  .competences__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
 
-// @media screen and (max-width: 576px) {
-//   .criteria__title {
-//     font-size: 20px;
-//     line-height: 24px;
-//   }
+  .competences__wrapper {
+    padding: 16px;
+  }
 
-//   .criteria__wrapper {
-//     padding: 24px 16px;
-//   }
+  .competences__table {
+    margin-top: 24px;
 
-//   .criteria__container {
-//     margin-top: 16px;
-//     gap: 16px;
-//   }
+    & table td:last-child {
+      font-size: 15px;
+      line-height: 19.5px;
+    }
+  }
 
-//   .criteria__card {
-//     padding: 24px 16px;
-//     flex-basis: 100%;
-//     width: 100%;
+  .competences__btn {
+    width: 100%;
+  }
 
-//     &_title {
-//       font-size: 16px;
-//       line-height: 21.6px;
-//     }
-
-//     &_text {
-//       font-size: 16px;
-//       line-height: 20.8px;
-//     }
-//   }
-// }
+  .competences__text {
+    font-size: 18px;
+    line-height: 23.4px;
+  }
+}

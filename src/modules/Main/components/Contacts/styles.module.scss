@@ -127,19 +127,30 @@
 
     &__wrapper {
       padding: 36px 28px;
+      gap: 30px;
     }
 
     &__container {
-      flex-direction: column;
+      gap: 20px;
+      padding-left: 0px;
+    }
+
+    &__row {
       gap: 30px;
     }
 
     &__col {
       flex-basis: 100%;
+
+      &_center {
+        padding-right: 0px;
+      }
     }
 
     &__img {
+      flex-shrink: 0;
       align-self: center;
+      margin-right: 30px;
     }
   }
 }
@@ -153,11 +164,25 @@
   .contacts__wrapper {
     flex-direction: column;
     gap: 24px;
-    padding: 16px;
+    padding: 24px 16px;
   }
 
   .contacts__container {
     flex-direction: column;
     gap: 24px;
+  }
+
+  .contacts__row {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .contacts__img {
+    margin-right: 0px;
+  }
+
+  .contacts__col {
+    align-items: center;
   }
 }
