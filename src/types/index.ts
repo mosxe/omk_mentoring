@@ -36,7 +36,9 @@ export interface ResponseData extends Error {
     news: New[];
     contacts: Contact;
     link_corporate_competencies_mentor: string;
+    link_file_program_training: string;
     link_program_training: string;
+    link_additional_competencies: string;
   };
 }
 
@@ -60,6 +62,7 @@ export interface Collaborator {
   tab_number: string;
   position: string;
   subdivision: string;
+  sex?: 'w' | 'm' | '';
 }
 
 export interface ResponseForm extends Error {

@@ -93,7 +93,6 @@ export const getCollaborators = async (
 
 export const getForm = async (type: FormType): Promise<ResponseForm> => {
   const API_URL = getUrl('getDataForm', [{ type: type }]);
-  console.log(API_URL);
   try {
     if (import.meta.env.DEV) {
       const results = (await mockFetchData(data.formMentor)) as ResponseForm;

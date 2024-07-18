@@ -1,25 +1,25 @@
-﻿import { getLinkFile } from 'helpers';
+﻿import { getLinkFile, getLink } from 'helpers';
 import styles from './styles.module.scss';
 
 type Props = {
   link: string;
+  linkHref: string;
 };
 
-const Competences = ({ link }: Props) => {
-  const handleClick = (isProgram?: boolean) => {
-    let linkName = 'Корпоративные компетенции наставника';
-    let linkFile = getLinkFile(link);
-    if (isProgram) {
-      linkName = 'Программа развития наставников';
-      linkFile = '33333';
-    }
-
+const Competences = ({ link, linkHref }: Props) => {
+  const handleClick = () => {
+    const linkFile = getLinkFile(link);
     const a = document.createElement('a');
     a.href = linkFile;
-    a.download = linkName;
+    a.download = 'Корпоративные компетенции наставника';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+  };
+
+  const handleHref = () => {
+    const link = getLink(linkHref);
+    window.open(link, '_blank');
   };
 
   return (
@@ -36,7 +36,7 @@ const Competences = ({ link }: Props) => {
             <button
               className={styles.competences__btn}
               type='button'
-              onClick={() => handleClick()}
+              onClick={handleClick}
             >
               <span>Скачать</span>
               <svg
@@ -307,10 +307,7 @@ const Competences = ({ link }: Props) => {
           Освоить или прокачать компетенции «Ориентация на продуктивное
           взаимодействие» и «Передача знаний и опыта» наставникам помогает
           корпоративный университет в{' '}
-          <span
-            className={styles.competences__link}
-            onClick={() => handleClick(true)}
-          >
+          <span className={styles.competences__link} onClick={handleHref}>
             программе развития наставников
           </span>
         </div>

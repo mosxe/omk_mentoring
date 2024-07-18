@@ -120,15 +120,18 @@ const Main = () => {
         <Information onClickSection={handleClickSection} />
         <Knowledge onClickSection={handleClickSection} />
         <Reference />
-        <Mentor ref={mentorRef} />
-        <Competences link={data.data.link_corporate_competencies_mentor} />
+        <Mentor ref={mentorRef} link={data.data.link_additional_competencies} />
+        <Competences
+          link={data.data.link_corporate_competencies_mentor}
+          linkHref={data.data.link_program_training}
+        />
         <Support
           news={data.data.news}
           ref={supportRef}
           link={data.data.link_program_training}
         />
         <Profitable ref={profitableRef} />
-        <Starting ref={startingRef} />
+        <Starting ref={startingRef} link={data.data.link_program_training} />
         <Contacts data={data.data.contacts} />
       </main>
       <Footer />

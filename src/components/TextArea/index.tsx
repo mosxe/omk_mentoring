@@ -9,7 +9,7 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const TextArea = forwardRef(
-  ({ value, onChange, placeholder = '', style }: Props) => {
+  ({ value, onChange, placeholder = '', style }: Props, _) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
     useEffect(() => {

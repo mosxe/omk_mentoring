@@ -1,15 +1,25 @@
 ﻿import Modal, { ButtonClose } from 'components/Modal';
+import MobileContent from './MobileContent';
+import { useWindowSize } from 'hooks/useWindowSize';
 import styles from './styles.module.scss';
 
 type Props = {
-  // id: number | null;
   onClose: () => void;
-  // onShowPopap: () => void;
-  // program: Program | undefined;
-  // actionButton: ActionProgram | undefined;
 };
 
 const ModalContent = ({ onClose }: Props) => {
+  const [width] = useWindowSize();
+
+  const handleClick = () => {
+    window.open(
+      'http://corportal.vsw.ru/sites/education/Lists/List2/NewForm.aspx?Source=http://corportal.vsw.ru/sites/education/SitePages/%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B5.aspx',
+      '_blank'
+    );
+  };
+
+  if (width < 768) {
+    return <MobileContent onClick={handleClick} onClose={onClose} />;
+  }
   return (
     <>
       <Modal.Header>
@@ -45,12 +55,10 @@ const ModalContent = ({ onClose }: Props) => {
                       <button
                         className={styles['modal-content__btn']}
                         type='button'
+                        onClick={handleClick}
                       >
                         Подать заявку на выплату
                       </button>
-                      <span className={styles['modal-content__link']}>
-                        Заявка на допплату
-                      </span>
                     </div>
                   </td>
                 </tr>

@@ -11,7 +11,7 @@ import Image2 from 'assets/svg/Support/sup_2.svg';
 import Image3 from 'assets/svg/Support/sup_3.svg';
 import { ResponseForm, New } from 'types';
 import { getForm, postFormData } from 'services';
-import { transformData, getLinkFile } from 'helpers';
+import { transformData, getLink } from 'helpers';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
@@ -58,15 +58,9 @@ const Support = forwardRef<HTMLDivElement, Props>(({ news, link }, ref) => {
     }
   };
 
-  const onDownloadFile = () => {
-    const linkName = 'Модуль 1. Технология наставничества';
-    const linkFile = getLinkFile(link);
-    const a = document.createElement('a');
-    a.href = linkFile;
-    a.download = linkName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+  const handleHref = () => {
+    const linkHref = getLink(link);
+    window.open(linkHref, '_blank');
   };
 
   const onSubmit = (dataForm: Record<string, string | boolean>) => {
@@ -105,7 +99,7 @@ const Support = forwardRef<HTMLDivElement, Props>(({ news, link }, ref) => {
               <div className={styles.support__text_b}>Обучение</div>
               <div className={styles.support__text}>
                 Обучение по программе развития наставников{' '}
-                <span className={styles.support__link} onClick={onDownloadFile}>
+                <span className={styles.support__link} onClick={handleHref}>
                   «Модуль 1. Технология наставничества»
                 </span>
                 .

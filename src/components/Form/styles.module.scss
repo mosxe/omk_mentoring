@@ -153,24 +153,32 @@
 
 @media screen and (max-width: 576px) {
   .form {
-    gap: 20px;
+    gap: 16px;
 
-    &__header {
-      margin-bottom: 4px;
-
-      & h2 {
-        font-size: 16px;
-        line-height: 21.6px;
-      }
+    &__header h2 {
+      font-size: 14px;
+      line-height: 16.8px;
     }
 
     &__text {
       font-size: 14px;
-      line-height: 18.9px;
+      line-height: 16.8px;
     }
 
     &__btn {
       margin-top: 4px !important;
+    }
+
+    &__item {
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      &_wrapper {
+        padding-left: 0px;
+      }
     }
 
     &__item_header {
@@ -186,6 +194,11 @@
     &__item_help {
       font-size: 14px;
       line-height: 18.2px;
+    }
+
+    &__item_desc {
+      font-size: 14px;
+      line-height: 18.9px;
     }
   }
 }

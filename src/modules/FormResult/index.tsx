@@ -65,6 +65,13 @@ const FormResult = () => {
       .finally(() => setLoadingContent(false));
   };
 
+  const dearPerson =
+    data.collaborator?.sex === 'w'
+      ? 'Уважаемая'
+      : data.collaborator?.sex === 'm'
+      ? 'Уважаемый'
+      : 'Уважаемый(ая)';
+
   const Text = () => {
     if (data.type === 'manager_mentor') {
       return (
@@ -131,7 +138,7 @@ const FormResult = () => {
         <main className={stylesMain.main}>
           <div className={styles['form-result']}>
             <div className={styles['form-result__title']}>
-              Уважаемый, {data.collaborator.firstname}{' '}
+              ${dearPerson}, {data.collaborator.firstname}{' '}
               {data.collaborator.middlename}!
             </div>
             <p className={styles['form-result__text']}>
@@ -155,7 +162,7 @@ const FormResult = () => {
       <main className={stylesMain.main}>
         <div className={styles['form-result']}>
           <div className={styles['form-result__title']}>
-            Уважаемый, {data.collaborator.firstname}{' '}
+            {dearPerson}, {data.collaborator.firstname}{' '}
             {data.collaborator.middlename}!
           </div>
           <Text />

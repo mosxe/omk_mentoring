@@ -64,7 +64,9 @@ const initialData = {
       phone_mobile: ''
     },
     link_corporate_competencies_mentor: '',
-    link_program_training: ''
+    link_file_program_training: '',
+    link_program_training: '',
+    link_additional_competencies: ''
   },
   isError: false,
   errorMessage: ''

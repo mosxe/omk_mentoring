@@ -36,7 +36,9 @@
         "phone_mobile": "8-9109999999"
       },
       "link_corporate_competencies_mentor": "/download_file.html?file_id=7049853312861981279",
-      "link_program_training": "/download_file.html?file_id=7049853163063803457"
+      "link_file_program_training": "/download_file.html?file_id=7049853163063803457",
+      "link_additional_competencies": "/download_file.html?file_id=7049853163063803457",
+      "link_program_training": "/test"
     },
     "isError": false,
     "errorMessage": ""
@@ -407,9 +409,10 @@
       "middlename": "Владимирович",
       "firstname": "Кирилл",
       "lastname": "Петров",
-      "tab_number": "04040040404",
+      "tab_number": "",
       "position": "Начальник цеха",
-      "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+      "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр.",
+      "sex": "w"
     },
     "type": "manager_training",
     "is_done": false,

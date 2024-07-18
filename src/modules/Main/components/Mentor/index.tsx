@@ -3,8 +3,11 @@ import Image from 'assets/images/Mentor/mentor.jpg';
 import { getLinkFile } from 'helpers';
 import styles from './styles.module.scss';
 
-const Mentor = forwardRef<HTMLDivElement>((_, ref) => {
-  const link = '12312';
+type Props = {
+  link: string;
+};
+
+const Mentor = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
   const handleClick = () => {
     const linkFile = getLinkFile(link);
     const a = document.createElement('a');

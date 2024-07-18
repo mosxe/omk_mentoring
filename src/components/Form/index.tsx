@@ -39,7 +39,6 @@ const Form = ({
 
   useEffect(() => {
     const subscription = methods.watch((values) => {
-      console.log(values);
       const isValid = getValidForm(values, data.data);
       if (isValid && isDisabledForm) {
         setDisabledForm(false);
@@ -107,8 +106,11 @@ const Form = ({
                 <span>
                   <strong>{`${data.collaborator?.lastname} ${data.collaborator?.firstname} ${data.collaborator?.middlename}`}</strong>
                 </span>
-                , {data.collaborator?.position} ({data.collaborator?.tab_number}
-                ), {data.collaborator?.subdivision}
+                , {data.collaborator?.position}{' '}
+                {data.collaborator?.tab_number
+                  ? `(${data.collaborator?.tab_number})`
+                  : ''}
+                , {data.collaborator?.subdivision}
               </div>
             </ItemContainer>
           )}

@@ -60,11 +60,8 @@ const Information = ({ onClickSection }: Props) => {
             alt='Картинка'
           />
           <div className={styles.information__card_text}>
-            Сотрудникам, которые хотят{' '}
-            <span className={styles.information__card_link}>
-              оставить отзыв о своем наставнике
-            </span>{' '}
-            по результату наставничества
+            Сотрудникам, которые хотят оставить отзыв о своем наставнике по
+            результату наставничества
           </div>
         </div>
       </div>

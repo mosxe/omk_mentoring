@@ -6,7 +6,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   checked?: boolean;
 }
 
-const RadioButton = forwardRef(({ label, checked, ...props }: Props) => {
+const RadioButton = forwardRef(({ label, checked, ...props }: Props, _) => {
   const className = checked
     ? `${styles['radio-button']} ${styles['radio-button_checked']}`
     : styles['radio-button'];

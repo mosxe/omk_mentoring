@@ -8,11 +8,15 @@ import Image2 from 'assets/svg/Starting/number_2.svg';
 import Image3 from 'assets/svg/Starting/number_3.svg';
 import { ResponseForm } from 'types';
 import { getForm, postFormData } from 'services';
-import { transformData } from 'helpers';
+import { transformData, getLink } from 'helpers';
 import { initialForm } from 'services/constants';
 import styles from './styles.module.scss';
 
-const Starting = forwardRef<HTMLDivElement>((_, ref) => {
+type Props = {
+  link: string;
+};
+
+const Starting = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
   const [data, setData] = useState<ResponseForm>(initialForm);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isLoadingContent, setLoadingContent] = useState<boolean>(false);
@@ -65,6 +69,11 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
       .finally(() => setLoadingContent(false));
   };
 
+  const handleHref = () => {
+    const linkHref = getLink(link);
+    window.open(linkHref, '_blank');
+  };
+
   return (
     <>
       <section className={styles.starting} ref={ref}>
@@ -111,7 +120,10 @@ const Starting = forwardRef<HTMLDivElement>((_, ref) => {
                 <div className={styles.starting__card_text}>
                   Анкету получит куратор проекта, запросит рекомендаций от
                   руководителя и пригласит вас на{' '}
-                  <span className={styles.starting__card_link}>
+                  <span
+                    className={styles.starting__card_link}
+                    onClick={handleHref}
+                  >
                     программу развития наставников «Модуль 1. Технология
                     наставничества»
                   </span>

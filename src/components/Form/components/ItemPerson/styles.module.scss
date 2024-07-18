@@ -56,3 +56,19 @@
     border-radius: 5px;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .item-person > .item-person__row {
+    margin-bottom: 10px;
+  }
+
+  .item-person__wrapper {
+    padding: 16px;
+  }
+
+  .item-person__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

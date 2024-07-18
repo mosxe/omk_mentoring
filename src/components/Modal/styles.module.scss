@@ -71,6 +71,19 @@
       animation: fadeOut 0.2s forwards;
     }
   }
+
+  & div,
+  p,
+  span,
+  a,
+  input,
+  textarea,
+  keygen,
+  select,
+  button,
+  h2 {
+    font-family: 'Verdana', sans-serif !important;
+  }
 }
 
 .modal-header-close {

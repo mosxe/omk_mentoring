@@ -39,6 +39,19 @@
     text-align: center;
     color: var(--page-color-link);
   }
+
+  & div,
+  p,
+  span,
+  a,
+  input,
+  textarea,
+  keygen,
+  select,
+  button,
+  h2 {
+    font-family: 'Verdana', sans-serif !important;
+  }
 }
 
 @media screen and (max-width: 576px) {

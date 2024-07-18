@@ -1,6 +1,7 @@
 ﻿import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
+import { useWindowSize } from 'hooks/useWindowSize';
 import { Navigation, Scrollbar, A11y } from 'swiper/modules';
 import classNames from 'classnames';
 import Slider from './Slider';
@@ -18,6 +19,7 @@ type Props = {
 const News = ({ data }: Props) => {
   const swiperRef = useRef<SwiperCore>();
   const [activeSlider, setActiveSlider] = useState<number>(0);
+  const [width] = useWindowSize();
 
   const classNameBtnPrev = classNames(
     styles['news__bullet'],
@@ -27,6 +29,10 @@ const News = ({ data }: Props) => {
     styles['news__bullet'],
     styles['news__bullet--next']
   );
+
+  const isShowNextBtn =
+    (width >= 1024 && data.length > 3) ||
+    (width < 1024 && width >= 577 && data.length > 1);
 
   return (
     <div className={styles.news}>
@@ -98,29 +104,30 @@ const News = ({ data }: Props) => {
             </svg>
           </button>
         )}
-        {(swiperRef.current === undefined || !swiperRef.current?.isEnd) && (
-          <button
-            type='button'
-            className={classNameBtnNext}
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <svg
-              width='11'
-              height='20'
-              viewBox='0 0 11 20'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+        {(swiperRef.current === undefined || !swiperRef.current?.isEnd) &&
+          isShowNextBtn && (
+            <button
+              type='button'
+              className={classNameBtnNext}
+              onClick={() => swiperRef.current?.slideNext()}
             >
-              <path
-                d='M1 19L10 10L1 1'
-                stroke='#1A222C'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-          </button>
-        )}
+              <svg
+                width='11'
+                height='20'
+                viewBox='0 0 11 20'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M1 19L10 10L1 1'
+                  stroke='#1A222C'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
+            </button>
+          )}
       </div>
     </div>
   );

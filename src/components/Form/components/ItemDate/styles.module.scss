@@ -21,3 +21,17 @@
     min-width: 130px;
   }
 }
+
+@media screen and (max-width: 470px) {
+  .item-date {
+    flex-direction: column;
+
+    &__title {
+      min-width: 40px;
+    }
+
+    &__value {
+      width: 100%;
+    }
+  }
+}
