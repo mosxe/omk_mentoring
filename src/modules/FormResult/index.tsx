@@ -138,7 +138,7 @@ const FormResult = () => {
         <main className={stylesMain.main}>
           <div className={styles['form-result']}>
             <div className={styles['form-result__title']}>
-              ${dearPerson}, {data.collaborator.firstname}{' '}
+              {dearPerson}, {data.collaborator.firstname}{' '}
               {data.collaborator.middlename}!
             </div>
             <p className={styles['form-result__text']}>
