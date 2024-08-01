@@ -124,8 +124,7 @@ const Starting = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
                     className={styles.starting__card_link}
                     onClick={handleHref}
                   >
-                    программу развития наставников «Модуль 1. Технология
-                    наставничества»
+                    программу развития наставников «Технология наставничества. Модуль 1»
                   </span>
                 </div>
               </div>
@@ -141,7 +140,7 @@ const Starting = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
                   Приходите на программу развития для наставников
                 </div>
                 <div className={styles.starting__card_text}>
-                  <span>«Модуль 1. Технология наставничества»</span>
+                  <span>«Технология наставничества. Модуль 1»</span>
                   <br></br>
                   <br></br>
                   <span>

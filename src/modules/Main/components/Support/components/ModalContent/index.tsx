@@ -1,13 +1,15 @@
 ﻿import Modal, { ButtonClose } from 'components/Modal';
 import MobileContent from './MobileContent';
 import { useWindowSize } from 'hooks/useWindowSize';
+import { getLinkFile } from 'helpers';
 import styles from './styles.module.scss';
 
 type Props = {
   onClose: () => void;
+  link: string;
 };
 
-const ModalContent = ({ onClose }: Props) => {
+const ModalContent = ({ onClose, link }: Props) => {
   const [width] = useWindowSize();
 
   const handleClick = () => {
@@ -17,13 +19,55 @@ const ModalContent = ({ onClose }: Props) => {
     );
   };
 
+  const onDowloadFile = () => {
+    const linkFile = getLinkFile(link);
+    const a = document.createElement('a');
+    a.href = linkFile;
+    a.download = 'Актуальные выплаты';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   if (width < 768) {
-    return <MobileContent onClick={handleClick} onClose={onClose} />;
+    return (
+      <MobileContent
+        onClick={handleClick}
+        onDowloadFile={onDowloadFile}
+        onClose={onClose}
+        link={link}
+      />
+    );
   }
   return (
     <>
       <Modal.Header>
-        <ButtonClose onClick={onClose} />
+        <div className={styles['modal-header']}>
+          {link && (
+            <button
+              className={styles['modal-content__btn-download']}
+              type='button'
+              onClick={onDowloadFile}
+            >
+              <span>Скачать</span>
+              <svg
+                width='13'
+                height='14'
+                viewBox='0 0 13 14'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M2.5 7.16667L6.5 10.7941L10.5 7.20181M6.5 1.16667V10.5952M0.5 13.1667H12.5'
+                  stroke='#8D8E91'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
+            </button>
+          )}
+          <ButtonClose onClick={onClose} />
+        </div>
       </Modal.Header>
       <Modal.Body>
         <div className={styles['modal-content']}>
@@ -31,7 +75,7 @@ const ModalContent = ({ onClose }: Props) => {
             <table className={styles['modal-content__table']}>
               <thead>
                 <tr>
-                  <th colSpan={2}>Надбавки стимулирующего характера</th>
+                  <th colSpan={2}>Актуальные выплаты</th>
                   <th>
                     <div className={styles['modal-content__col']}>
                       <span>Дополнительные мотивационные выплаты</span>

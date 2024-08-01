@@ -39,6 +39,7 @@ export interface ResponseData extends Error {
     link_file_program_training: string;
     link_program_training: string;
     link_additional_competencies: string;
+    link_file_payments: string;
   };
 }
 
@@ -62,6 +63,7 @@ export interface Collaborator {
   tab_number: string;
   position: string;
   subdivision: string;
+  phone?: string;
   sex?: 'w' | 'm' | '';
 }
 

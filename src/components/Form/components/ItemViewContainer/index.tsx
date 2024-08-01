@@ -22,7 +22,7 @@ const ItemViewContainer = ({ data, person, view }: Props) => {
     case '3':
       return <ItemProfession data={data} />;
     case '4':
-      return <ItemPhone data={data} />;
+      return <ItemPhone data={data} phone={person.phone} />;
     case '5':
       return <ItemDate data={data} />;
     default:

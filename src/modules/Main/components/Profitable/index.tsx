@@ -6,7 +6,11 @@ import Image2 from 'assets/svg/Profitable/prof_2.svg';
 import Image3 from 'assets/svg/Profitable/prof_3.svg';
 import styles from './styles.module.scss';
 
-const Profitable = forwardRef<HTMLDivElement>((_, ref) => {
+type Props = {
+  link: string;
+};
+
+const Profitable = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
   const [isShowModal, setShowModal] = useState<boolean>(false);
 
   const onShowModalHandler = () => {
@@ -94,7 +98,7 @@ const Profitable = forwardRef<HTMLDivElement>((_, ref) => {
         </div>
       </section>
       <Modal isShow={isShowModal} onClose={onShowModalHandler} width={1000}>
-        <ModalContent onClose={onShowModalHandler} />
+        <ModalContent onClose={onShowModalHandler} link={link} />
       </Modal>
     </>
   );

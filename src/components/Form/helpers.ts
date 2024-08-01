@@ -53,7 +53,7 @@ const getValidForm = (values: any, data: Poll[]) => {
           }
           break;
         case '4':
-          if (String(obj).length < 18) {
+          if (String(obj).length < 14) {
             isValid = false;
           }
           break;

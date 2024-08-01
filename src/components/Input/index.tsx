@@ -33,8 +33,8 @@ const Input = ({
   if (type === 'tel') {
     return (
       <InputMask
-        mask='+7 (999) 999-99-99'
-        placeholder='+7 ( )'
+        mask='+7(999)999-99-99'
+        placeholder='+7( )'
         value={value}
         onChange={onChange}
         maskPlaceholder={null}

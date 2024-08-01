@@ -4,19 +4,46 @@ import styles from './styles.module.scss';
 type Props = {
   onClick: () => void;
   onClose: () => void;
+  onDowloadFile: () => void;
+  link: string;
 };
 
-const MobileContent = ({ onClick, onClose }: Props) => {
+const MobileContent = ({ onClick, onClose, onDowloadFile, link }: Props) => {
   return (
     <>
       <Modal.Header>
-        <ButtonClose onClick={onClose} />
+        <div className={styles['modal-header']}>
+          {link && (
+            <button
+              className={styles['modal-content__btn-download']}
+              type='button'
+              onClick={onDowloadFile}
+            >
+              <span>Скачать</span>
+              <svg
+                width='13'
+                height='14'
+                viewBox='0 0 13 14'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M2.5 7.16667L6.5 10.7941L10.5 7.20181M6.5 1.16667V10.5952M0.5 13.1667H12.5'
+                  stroke='#8D8E91'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
+            </button>
+          )}
+          <ButtonClose onClick={onClose} />
+        </div>
       </Modal.Header>
       <Modal.Body>
         <div className={styles['modal-content-mobile']}>
-          <div className={styles['modal-content-mobile__wrapper']}>
+          <div>
             <div className={styles['modal-content-mobile__header']}>
-              Надбавки стимулирующего характера
+              Актуальные выплаты
             </div>
             <div className={styles['modal-content-mobile__subheader']}>
               Наставничество по рабочей профессии
@@ -72,9 +99,9 @@ const MobileContent = ({ onClick, onClose }: Props) => {
               </div>
             </div>
           </div>
-          <div className={styles['modal-content-mobile__wrapper']}>
+          <div>
             <div className={styles['modal-content-mobile__header']}>
-              Надбавки стимулирующего характера
+              Актуальные выплаты
             </div>
             <div className={styles['modal-content-mobile__subheader']}>
               Наставничество для студентов
@@ -125,7 +152,7 @@ const MobileContent = ({ onClick, onClose }: Props) => {
               </div>
             </div>
           </div>
-          <div className={styles['modal-content-mobile__wrapper']}>
+          <div>
             <div
               className={`${styles['modal-content-mobile__header']} ${styles['modal-content-mobile__header_p']}`}
             >

@@ -64,4 +64,40 @@ const transformData = (data: any): FormData[] => {
   return results;
 };
 
-export { getLink, getLinkFile, transformData };
+const formattingPhone = (phone: string): string => {
+  const phoneWithoutSpaces = phone.replace(/\s/g, '');
+
+  if (phoneWithoutSpaces.startsWith('9')) {
+    const formatedPhone =
+      '+7(' +
+      phoneWithoutSpaces.slice(0, 3) +
+      ')' +
+      phoneWithoutSpaces.slice(3);
+    return formatedPhone;
+  }
+
+  if (phoneWithoutSpaces.startsWith('+79')) {
+    const formatedPhone =
+      phoneWithoutSpaces.slice(0, 2) +
+      '(' +
+      phoneWithoutSpaces.slice(2, 5) +
+      ')' +
+      phoneWithoutSpaces.slice(5);
+    return formatedPhone;
+  }
+
+  if (
+    phoneWithoutSpaces.startsWith('89') ||
+    phoneWithoutSpaces.startsWith('79')
+  ) {
+    const formatedPhone =
+      '+7(' +
+      phoneWithoutSpaces.slice(1, 4) +
+      ')' +
+      phoneWithoutSpaces.slice(4);
+    return formatedPhone;
+  }
+  return '';
+};
+
+export { getLink, getLinkFile, transformData, formattingPhone };

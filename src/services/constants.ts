@@ -21,7 +21,8 @@ const initialForm = {
     lastname: '',
     tab_number: '',
     position: '',
-    subdivision: ''
+    subdivision: '',
+    phone: ''
   },
   collaborator: null,
   isError: false,
@@ -36,7 +37,8 @@ const initialFormResult = {
     lastname: '',
     tab_number: '',
     position: '',
-    subdivision: ''
+    subdivision: '',
+    phone: ''
   },
   collaborator: {
     firstname: '',
@@ -66,7 +68,8 @@ const initialData = {
     link_corporate_competencies_mentor: '',
     link_file_program_training: '',
     link_program_training: '',
-    link_additional_competencies: ''
+    link_additional_competencies: '',
+    link_file_payments: ''
   },
   isError: false,
   errorMessage: ''
