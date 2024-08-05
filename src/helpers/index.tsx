@@ -100,4 +100,20 @@ const formattingPhone = (phone: string): string => {
   return '';
 };
 
-export { getLink, getLinkFile, transformData, formattingPhone };
+const formattingCode = (code: string): string => {
+  let tempCode = '';
+  if (!code.length) {
+    return '';
+  }
+
+  for (let i = 0; i < code.length; i++) {
+    if (code[i] === '0') {
+      tempCode = code.slice(i + 1);
+      continue;
+    }
+    break;
+  }
+  return tempCode !== '' ? tempCode : code;
+};
+
+export { getLink, getLinkFile, transformData, formattingPhone, formattingCode };

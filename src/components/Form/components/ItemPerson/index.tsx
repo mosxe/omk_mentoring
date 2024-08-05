@@ -1,6 +1,7 @@
 ﻿import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Poll, Collaborator } from 'types';
+import { formattingCode } from 'helpers';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -39,7 +40,7 @@ const ItemPerson = ({ data, person }: Props) => {
           <div
             className={`${styles['item-person__value']} ${styles['item-person__value_round']}`}
           >
-            {person.tab_number}
+            {formattingCode(person.tab_number)}
           </div>
         </div>
         <div className={styles['item-person__row']}>

@@ -6,6 +6,7 @@ import { getCollaborators } from 'services';
 import { SELECT_MESSAGES_PERSONS } from '../../constants';
 import debounce from 'lodash.debounce';
 import classNames from 'classnames';
+import { formattingCode } from 'helpers';
 import styles from './styles.module.scss';
 import { SearchCollaborator, Poll } from 'types';
 
@@ -107,7 +108,7 @@ const ItemSelect = ({ data }: Props) => {
           <div
             className={`${styles['item-select__value']} ${styles['item-select__value_round']}`}
           >
-            {selectedAdditionValues?.tab_number}
+            {formattingCode(selectedAdditionValues?.tab_number ?? '')}
           </div>
         </div>
         <div className={styles['item-select__row']}>
