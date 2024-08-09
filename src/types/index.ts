@@ -40,6 +40,7 @@ export interface ResponseData extends Error {
     link_program_training: string;
     link_additional_competencies: string;
     link_file_payments: string;
+    link_catalog: string;
   };
 }
 

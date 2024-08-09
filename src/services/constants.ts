@@ -69,7 +69,8 @@ const initialData = {
     link_file_program_training: '',
     link_program_training: '',
     link_additional_competencies: '',
-    link_file_payments: ''
+    link_file_payments: '',
+    link_catalog: ''
   },
   isError: false,
   errorMessage: ''
