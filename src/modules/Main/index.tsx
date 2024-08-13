@@ -128,7 +128,7 @@ const Main = () => {
         <Support
           news={data.data.news}
           ref={supportRef}
-          link={data.data.link_catalog}
+          link={data.data.link_program_training}
           linkFile={data.data.link_file_payments}
         />
         <Profitable ref={profitableRef} link={data.data.link_file_payments} />

@@ -50,7 +50,7 @@ const Support = forwardRef<HTMLDivElement, Props>(
                   Подать заявку на обучение по программе развития наставников
                   можно в{' '}
                   <span className={styles.support__link} onClick={handleHref}>
-                    Каталоге возможностей
+                    «Технология наставничества. Модуль 1»
                   </span>
                   .
                 </div>
