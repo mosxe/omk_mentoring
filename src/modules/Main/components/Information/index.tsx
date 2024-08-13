@@ -1,7 +1,6 @@
 ﻿import Image1 from 'assets/svg/Information/icon_1.svg';
 import Image2 from 'assets/svg/Information/icon_2.svg';
 import Image3 from 'assets/svg/Information/icon_3.svg';
-import Image4 from 'assets/svg/Information/icon_4.svg';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -51,17 +50,6 @@ const Information = ({ onClickSection }: Props) => {
             >
               попробовать себя в роли наставника
             </span>
-          </div>
-        </div>
-        <div className={styles.information__card}>
-          <img
-            className={styles.information__card_img}
-            src={Image4}
-            alt='Картинка'
-          />
-          <div className={styles.information__card_text}>
-            Сотрудникам, которые хотят оставить отзыв о своем наставнике по
-            результату наставничества
           </div>
         </div>
       </div>
