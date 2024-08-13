@@ -16,6 +16,7 @@ type AsyncProps = {
     callback: (options: OptionType[]) => void
   ) => void;
   noOptionsMessage?: any;
+  menuPortalTarget?: null | HTMLElement;
 };
 
 const AsyncSelectReact = (
@@ -31,7 +32,8 @@ const AsyncSelectReact = (
     loadOptions,
     innerRef = undefined,
     isArrow = true,
-    isClearable = false
+    isClearable = false,
+    menuPortalTarget = null
   } = props;
 
   const DropdownIndicator = (
@@ -85,6 +87,8 @@ const AsyncSelectReact = (
           noOptionsMessage: () => styles['select__text-left'],
           clearIndicator: () => styles['select__close']
         }}
+        menuPortalTarget={menuPortalTarget}
+        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
         value={value}
         onChange={onChange}
         loadOptions={loadOptions}

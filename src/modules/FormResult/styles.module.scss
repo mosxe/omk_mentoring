@@ -38,4 +38,102 @@
       color: var(--page-color-link);
     }
   }
+
+  &__modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 10px;
+
+    & h2 {
+      margin: 0px !important;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 23.4px;
+      text-align: left;
+      color: var(--page-color-black);
+    }
+  }
+
+  &__modal-wrapper {
+    padding: 0px 6px;
+  }
+
+  &__modal-footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+
+  &__modal-btn {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.6px;
+    margin: 0px !important;
+    border-radius: 5px;
+    padding: 12px 25px;
+    white-space: nowrap;
+    outline: none !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+
+    &_apply {
+      color: var(--page-color-white);
+      background-color: var(--page-color-dark-blue);
+      border: 1px solid var(--page-color-dark-blue);
+
+      &:hover {
+        background-color: var(--page-color-ligth-blue) !important;
+        color: var(--page-color-white) !important;
+        border: 1px solid var(--page-color-ligth-blue) !important;
+      }
+
+      &:active {
+        background-color: var(--page-color-black) !important;
+        color: var(--page-color-white) !important;
+        border: 1px solid var(--page-color-black) !important;
+      }
+
+      &:disabled {
+        background-color: var(--page-color-gray) !important;
+        color: var(--page-color-white) !important;
+        border: 1px solid var(--page-color-gray) !important;
+        cursor: default !important;
+      }
+    }
+
+    &_cancel {
+      background-color: var(--page-color-white) !important;
+      color: var(--page-color-link) !important;
+      border: 1px solid var(--page-color-link) !important;
+
+      &:hover {
+        background-color: var(--page-color-white) !important;
+        color: var(--page-color-dark-blue) !important;
+        border: 1px solid var(--page-color-dark-blue) !important;
+      }
+
+      &:active {
+        background-color: var(--page-color-white) !important;
+        color: var(--page-color-dark-gray) !important;
+        border: 1px solid var(--page-color-dark-gray) !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .form-result__modal-footer {
+    flex-direction: column;
+  }
+
+  .form-result__modal-btn {
+    width: 100%;
+  }
 }

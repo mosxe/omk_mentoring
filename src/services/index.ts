@@ -199,3 +199,36 @@ export const getFormResult = async (
     return initialFormResult as ResponseFormResult;
   }
 };
+
+export const changeManager = async (
+  id: string,
+  person_id: string | number
+): Promise<IError> => {
+  const API_URL = getUrl('changeManager');
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, person_id })
+  };
+
+  try {
+    if (import.meta.env.DEV) {
+      const results = (await mockFetchData({
+        isError: false,
+        errorMessage: ''
+      })) as IError;
+      return results;
+    }
+
+    const response = await fetch(API_URL, requestOptions);
+
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (e) {
+    return { isError: true, errorMessage: '' };
+  }
+};

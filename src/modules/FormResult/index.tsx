@@ -5,12 +5,14 @@ import Footer from 'components/Footer';
 import Loader from 'components/Loader';
 import Error from 'components/Error';
 import Alert from 'components/Alert';
+import Modal, { ButtonClose } from 'components/Modal';
 import Form from 'components/Form';
 import Popap from 'components/Popap';
 import { PopapAlert } from 'components/Popap';
+import SearchCollabs from './components/SearchCollabs';
 import { toast } from 'react-toastify';
 import { ResponseFormResult } from 'types';
-import { getFormResult, postFormData } from 'services';
+import { getFormResult, postFormData, changeManager } from 'services';
 import { initialFormResult } from 'services/constants';
 import { transformData } from 'helpers';
 import stylesMain from 'modules/Main/styles.module.scss';
@@ -24,9 +26,18 @@ const FormResult = () => {
   const [isError, setError] = useState<boolean>(false);
   const [isShowPopap, setShowPopap] = useState<boolean>(false);
   const [isDoneForm, setDoneForm] = useState<boolean>(false);
+  const [isDoneChange, setDoneChange] = useState<boolean>(false);
+  const [isShowModal, setShowModal] = useState<boolean>(false);
+  const [selectedManagerValue, setSelectedManagerValue] = useState<
+    string | number
+  >('');
 
   const onShowPopap = () => {
     setShowPopap(!isShowPopap);
+  };
+
+  const onShowModalHandler = () => {
+    setShowModal(!isShowModal);
   };
 
   useEffect(() => {
@@ -56,6 +67,24 @@ const FormResult = () => {
         } else {
           setShowPopap(true);
           setDoneForm(true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        toast('Произошла ошибка');
+      })
+      .finally(() => setLoadingContent(false));
+  };
+
+  const onChangeManager = () => {
+    setLoadingContent(true);
+    onShowModalHandler();
+    changeManager(id ?? '', selectedManagerValue)
+      .then((res) => {
+        if (res.isError) {
+          toast('Произошла ошибка');
+        } else {
+          setDoneChange(true);
         }
       })
       .catch((e) => {
@@ -156,6 +185,26 @@ const FormResult = () => {
     );
   }
 
+  if (isDoneChange) {
+    return (
+      <>
+        <Header />
+        <main className={stylesMain.main}>
+          <div className={styles['form-result']}>
+            <div className={styles['form-result__title']}>
+              {dearPerson}, {data.collaborator.firstname}{' '}
+              {data.collaborator.middlename}!
+            </div>
+            <p className={styles['form-result__text']}>
+              Руководитель был успешно изменен.
+            </p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <>
       <Header />
@@ -172,12 +221,49 @@ const FormResult = () => {
             isError={isError}
             data={data}
             onSubmit={onSubmit}
+            onShowModal={onShowModalHandler}
             isResult={true}
           />
         </div>
       </main>
       <Footer />
       <Alert />
+      {(data.type === 'manager_mentor' || data.type === 'manager_training') && (
+        <Modal isShow={isShowModal} onClose={onShowModalHandler} width={800}>
+          <Modal.Header>
+            <div className={styles['form-result__modal-header']}>
+              <h2>Изменить руководителя</h2>
+              <ButtonClose onClick={onShowModalHandler} />
+            </div>
+          </Modal.Header>
+          <Modal.Body>
+            <div className={styles['form-result__modal-wrapper']}>
+              <SearchCollabs
+                value={selectedManagerValue}
+                onClick={setSelectedManagerValue}
+              />
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className={styles['form-result__modal-footer']}>
+              <button
+                type='button'
+                className={`${styles['form-result__modal-btn']} ${styles['form-result__modal-btn_cancel']}`}
+                onClick={onShowModalHandler}
+              >
+                Отменить
+              </button>
+              <button
+                type='button'
+                className={`${styles['form-result__modal-btn']} ${styles['form-result__modal-btn_apply']}`}
+                onClick={onChangeManager}
+              >
+                Сохранить
+              </button>
+            </div>
+          </Modal.Footer>
+        </Modal>
+      )}
       <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
         <PopapAlert
           type={data.type === 'person_mentor' ? 'mentor' : 'training'}

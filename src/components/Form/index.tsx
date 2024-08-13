@@ -18,6 +18,7 @@ type Props = {
   isLoadingContent: boolean;
   isError: boolean;
   onSubmit: (data: Record<string, string | boolean>) => void;
+  onShowModal?: () => void;
   isResult?: boolean;
 };
 const Form = ({
@@ -28,6 +29,7 @@ const Form = ({
   isLoadingContent,
   isError,
   onSubmit,
+  onShowModal,
   isResult = false
 }: Props) => {
   const [isDisabledForm, setDisabledForm] = useState<boolean>(true);
@@ -113,6 +115,15 @@ const Form = ({
                 , {data.collaborator?.subdivision}
               </div>
             </ItemContainer>
+          )}
+          {isResult && (
+            <button
+              type='button'
+              onClick={onShowModal}
+              className={styles.form__btn}
+            >
+              Поменять руководителя
+            </button>
           )}
           <button
             type='submit'
