@@ -36,9 +36,7 @@ export interface ResponseData extends Error {
     news: New[];
     contacts: Contact;
     link_corporate_competencies_mentor: string;
-    link_file_program_training: string;
     link_program_training: string;
-    link_additional_competencies: string;
     link_file_payments: string;
   };
 }
@@ -54,6 +52,7 @@ export interface Poll {
   view: string;
   entries: Entry[];
   type: 'select' | 'text' | 'choice' | 'date' | 'link_to_database_object';
+  person?: Collaborator;
 }
 
 export interface Collaborator {

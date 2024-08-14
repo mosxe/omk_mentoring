@@ -33,7 +33,8 @@ const AsyncSelectReact = (
     innerRef = undefined,
     isArrow = true,
     isClearable = false,
-    menuPortalTarget = null
+    menuPortalTarget = null,
+    defaultValue = []
   } = props;
 
   const DropdownIndicator = (
@@ -69,6 +70,7 @@ const AsyncSelectReact = (
         ref={innerRef}
         name={id}
         placeholder={'Поиск...'}
+        defaultValue={defaultValue}
         noOptionsMessage={noOptionsMessage}
         loadingMessage={() => 'Загрузка данных...'}
         classNames={{

@@ -19,6 +19,7 @@ import { initialData } from 'services/constants';
 import styles from './styles.module.scss';
 
 const Main = () => {
+  const competensceRef = useRef<HTMLDivElement>(null);
   const startingRef = useRef<HTMLDivElement>(null);
   const supportRef = useRef<HTMLDivElement>(null);
   const mentorRef = useRef<HTMLDivElement>(null);
@@ -53,6 +54,13 @@ const Main = () => {
       case 'profitable':
         scrollPosY = profitableRef.current
           ? profitableRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight
+          : null;
+        break;
+      case 'competences':
+        scrollPosY = competensceRef.current
+          ? competensceRef.current.getBoundingClientRect().top +
             window.scrollY -
             headerHeight
           : null;
@@ -120,8 +128,9 @@ const Main = () => {
         <Information onClickSection={handleClickSection} />
         <Knowledge onClickSection={handleClickSection} />
         <Reference />
-        <Mentor ref={mentorRef} link={data.data.link_additional_competencies} />
+        <Mentor ref={mentorRef} onClickSection={handleClickSection} />
         <Competences
+          ref={competensceRef}
           link={data.data.link_corporate_competencies_mentor}
           linkHref={data.data.link_program_training}
         />

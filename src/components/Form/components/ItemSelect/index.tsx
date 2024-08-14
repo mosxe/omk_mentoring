@@ -1,4 +1,4 @@
-﻿import { useState, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import AsyncSelect from 'components/Select/AsyncSelect';
 import { Option } from 'components/Select/types';
@@ -15,10 +15,38 @@ type Props = {
 };
 
 const ItemSelect = ({ data }: Props) => {
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext();
   const [selectData, setSelectData] = useState<SearchCollaborator[]>([]);
   const [selectedValue, setSelectedValue] = useState<string | number>('');
   const messageRef = useRef<string>(SELECT_MESSAGES_PERSONS.initial);
+
+  useEffect(() => {
+    if (data.entries.length > 0) {
+      const option = {
+        value: data.entries[0].id,
+        label: data.entries[0].title
+      };
+      const dataPersons = [];
+      const personInfo: SearchCollaborator = {
+        id: data.entries[0].id,
+        name: data.entries[0].title,
+        tab_number: '',
+        position: '',
+        subdivision: ''
+      };
+
+      if (data.person) {
+        personInfo.tab_number = data.person.tab_number;
+        personInfo.position = data.person.position;
+        personInfo.subdivision = data.person.subdivision;
+      }
+
+      dataPersons.push(personInfo);
+      setValue(data.id, option);
+      setSelectedValue(data.entries[0].id);
+      setSelectData(dataPersons);
+    }
+  }, []);
 
   const noOptionsMessage = ({ inputValue }: { inputValue: string }) => {
     return inputValue ? messageRef.current : SELECT_MESSAGES_PERSONS.initial;
@@ -67,6 +95,11 @@ const ItemSelect = ({ data }: Props) => {
     (val) => val.id === selectedValue
   );
 
+  const defaultValue =
+    data.entries.length > 0
+      ? [{ value: data.entries[0].id, label: data.entries[0].title }]
+      : [];
+
   return (
     <div className={styles['item-select']}>
       <Controller
@@ -87,6 +120,7 @@ const ItemSelect = ({ data }: Props) => {
               }}
               noOptionsMessage={noOptionsMessage}
               isArrow={false}
+              defaultValue={defaultValue}
             />
           );
         }}

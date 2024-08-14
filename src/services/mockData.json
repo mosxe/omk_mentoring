@@ -36,8 +36,6 @@
         "phone_mobile": "8-9109999999"
       },
       "link_corporate_competencies_mentor": "/download_file.html?file_id=7049853312861981279",
-      "link_file_program_training": "/download_file.html?file_id=7049853163063803457",
-      "link_additional_competencies": "/download_file.html?file_id=7049853163063803457",
       "link_program_training": "/test",
       "link_file_payments": "/download_file.html?file_id=7049853163063803457"
     },
@@ -58,7 +56,15 @@
         "title": "Укажите Ф.И.О. своего непосредственного руководителя",
         "type": "link_to_database_object",
         "view": "2",
-        "entries": []
+        "entries": [{ "id": "3333", "title": "Петров Иван Иванович" }],
+        "person": {
+          "middlename": "Иванов",
+          "firstname": "Иван",
+          "lastname": "Иванович",
+          "tab_number": "",
+          "position": "Начальник цеха",
+          "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+        }
       },
       {
         "id": "24637236",
@@ -166,7 +172,8 @@
         "title": "Укажите Ф.И.О. своего непосредственного руководителя",
         "type": "link_to_database_object",
         "view": "2",
-        "entries": []
+        "entries": [],
+        "person": null
       },
       {
         "id": "78643652222",
@@ -368,7 +375,15 @@
         "title": "Укажите Ф.И.О. своего непосредственного руководителя",
         "type": "link_to_database_object",
         "view": "2",
-        "entries": [{ "id": "6666", "title": "" }]
+        "entries": [{ "id": "666633", "title": "Иванов Иван" }],
+        "person": {
+          "middlename": "Иванов",
+          "firstname": "Иван",
+          "lastname": "Иванович",
+          "tab_number": "",
+          "position": "Начальник цеха",
+          "subdivision": "ДТБТ Цех по антикор. покр. тр. т отг. гот. пр."
+        }
       },
       {
         "id": "24637236",
@@ -388,64 +403,6 @@
         "entries": [
           { "id": "22174045", "title": "Да" },
           { "id": "11899251", "title": "Нет" }
-        ]
-      },
-      {
-        "id": "78643652222",
-        "title": "Когда в последний раз Вас привлекали в качестве наставника?",
-        "type": "select",
-        "view": "5",
-        "entries": []
-      },
-      {
-        "id": "57598479",
-        "title": "По какой профессии Вы хотите быть наставником (можно указать несколько):",
-        "type": "link_to_database_object",
-        "view": "3",
-        "entries": []
-      },
-      {
-        "id": "86658449",
-        "title": "Готовы ли Вы пройти обучение для Наставников (тренинг «Технология наставничества. Модуль 1»)?",
-        "type": "choice",
-        "view": "",
-        "entries": [
-          { "id": "81557687", "title": "Да" },
-          { "id": "58552157", "title": "Нет" }
-        ]
-      },
-      {
-        "id": "78643652",
-        "title": "Укажите Ваш контактный номер телефона",
-        "type": "text",
-        "view": "4",
-        "entries": []
-      },
-      {
-        "id": "78644444",
-        "title": "Укажите какой-то ранломнй текст",
-        "type": "text",
-        "view": "",
-        "entries": []
-      },
-      {
-        "id": "60727951",
-        "title": "Как Вы хотели бы вовлекаться в обучение?",
-        "type": "select",
-        "view": "",
-        "entries": [
-          {
-            "id": "56934236",
-            "title": "участвовать в разработке программ (делиться знаниями и опытом, давать экспертную оценку программ)"
-          },
-          {
-            "id": "77034285",
-            "title": "преподавать"
-          },
-          {
-            "id": "54611269",
-            "title": "другое"
-          }
         ]
       }
     ],

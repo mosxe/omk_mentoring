@@ -1,23 +1,12 @@
 ﻿import { forwardRef } from 'react';
 import Image from 'assets/images/Mentor/mentor.jpg';
-import { getLinkFile } from 'helpers';
 import styles from './styles.module.scss';
 
 type Props = {
-  link: string;
+  onClickSection: (section: string) => void;
 };
 
-const Mentor = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
-  const handleClick = () => {
-    const linkFile = getLinkFile(link);
-    const a = document.createElement('a');
-    a.href = linkFile;
-    a.download = 'Дополнительные компетенции';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
-
+const Mentor = forwardRef<HTMLDivElement, Props>(({ onClickSection }, ref) => {
   return (
     <section className={styles.mentor} ref={ref}>
       <div className={styles.mentor__wrapper}>
@@ -48,7 +37,10 @@ const Mentor = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
             </ul>
             <p className={styles.mentor__text}>
               Помимо этого, наставник должен обладать дополнительными{' '}
-              <span className={styles.mentor__link} onClick={handleClick}>
+              <span
+                className={styles.mentor__link}
+                onClick={() => onClickSection('competences')}
+              >
                 компетенциям
               </span>
             </p>
