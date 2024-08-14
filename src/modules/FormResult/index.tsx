@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Loader from 'components/Loader';
@@ -20,6 +20,7 @@ import styles from './styles.module.scss';
 
 const FormResult = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [data, setData] = useState<ResponseFormResult>(initialFormResult);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isLoadingContent, setLoadingContent] = useState<boolean>(false);
@@ -34,6 +35,9 @@ const FormResult = () => {
 
   const onShowPopap = () => {
     setShowPopap(!isShowPopap);
+    if (isShowPopap) {
+      navigate('/omk_mentoring');
+    }
   };
 
   const onShowModalHandler = () => {
@@ -85,6 +89,7 @@ const FormResult = () => {
           toast('Произошла ошибка');
         } else {
           setDoneChange(true);
+          setShowPopap(true);
         }
       })
       .catch((e) => {
@@ -167,7 +172,7 @@ const FormResult = () => {
         <main className={stylesMain.main}>
           <div className={styles['form-result']}>
             <div className={styles['form-result__title']}>
-              {dearPerson}, {data.collaborator.firstname}{' '}
+              {dearPerson} {data.collaborator.firstname}{' '}
               {data.collaborator.middlename}!
             </div>
             <p className={styles['form-result__text']}>
@@ -181,6 +186,13 @@ const FormResult = () => {
           </div>
         </main>
         <Footer />
+        <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
+          <PopapAlert
+            type={data.type === 'person_mentor' ? 'mentor' : 'training'}
+            isShowText={false}
+            title={`Вы заполнили анкету по сотруднику ${data.person.lastname} ${data.person.firstname} ${data.person.middlename}, ${data.person.position}`}
+          />
+        </Popap>
       </>
     );
   }
@@ -192,15 +204,22 @@ const FormResult = () => {
         <main className={stylesMain.main}>
           <div className={styles['form-result']}>
             <div className={styles['form-result__title']}>
-              {dearPerson}, {data.collaborator.firstname}{' '}
+              {dearPerson} {data.collaborator.firstname}{' '}
               {data.collaborator.middlename}!
             </div>
             <p className={styles['form-result__text']}>
-              Руководитель был успешно изменен.
+              Оценка сотрудника успешно делегирована указанному руководителю.{' '}
             </p>
           </div>
         </main>
         <Footer />
+        <Popap isShow={isShowPopap} onClose={onShowPopap} width={750}>
+          <PopapAlert
+            type={data.type === 'person_mentor' ? 'mentor' : 'training'}
+            isShowText={false}
+            title='Оценка сотрудника успешно делегирована указанному руководителю.'
+          />
+        </Popap>
       </>
     );
   }
@@ -211,7 +230,7 @@ const FormResult = () => {
       <main className={stylesMain.main}>
         <div className={styles['form-result']}>
           <div className={styles['form-result__title']}>
-            {dearPerson}, {data.collaborator.firstname}{' '}
+            {dearPerson} {data.collaborator.firstname}{' '}
             {data.collaborator.middlename}!
           </div>
           <Text />

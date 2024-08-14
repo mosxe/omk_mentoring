@@ -52,11 +52,16 @@ const getValidForm = (values: any, data: Poll[]) => {
             }
           }
           break;
-        case '4':
-          if (String(obj).length < 14) {
+        case '4': {
+          const numbersArray = String(obj).split('');
+          const filteredNumbersArray = numbersArray.filter(
+            (number) => number !== '-'
+          );
+          if (filteredNumbersArray.length < 14) {
             isValid = false;
           }
           break;
+        }
         case '5':
           if (obj.month.value === '' || obj.year.value === '') {
             isValid = false;

@@ -91,6 +91,21 @@ const Form = ({
               вопросов анкеты
             </div>
           )}
+          {isResult && (
+            <>
+              <div className={`${styles.form__text} ${styles.form__text_m}`}>
+                Если Вы считаете, что оценку данного сотрудника должен провести
+                другой руководитель, воспользуйтесь кнопкой ниже.
+              </div>
+              <button
+                type='button'
+                onClick={onShowModal}
+                className={styles.form__btn}
+              >
+                Делегировать оценку
+              </button>
+            </>
+          )}
           {data.data.map((item, index) => {
             const header = `Вопрос ${index + 1}`;
             return (
@@ -115,15 +130,6 @@ const Form = ({
                 , {data.collaborator?.subdivision}
               </div>
             </ItemContainer>
-          )}
-          {isResult && (
-            <button
-              type='button'
-              onClick={onShowModal}
-              className={styles.form__btn}
-            >
-              Поменять руководителя
-            </button>
           )}
           <button
             type='submit'

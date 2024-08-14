@@ -5,10 +5,20 @@ import styles from './styles.module.scss';
 type Props = {
   type: 'mentor' | 'training';
   isShowText?: boolean;
+  title?: string;
 };
 
-const PopapAlert = ({ type, isShowText = true }: Props) => {
+const PopapAlert = ({ type, isShowText = true, title }: Props) => {
   const srcImage = type === 'mentor' ? Image1 : Image2;
+
+  const Title = () =>
+    title ? (
+      title
+    ) : (
+      <>
+        Спасибо за заполнение формы!<br></br>Ваши ответы отправлены!
+      </>
+    );
 
   return (
     <div className={styles['popap-alert']}>
@@ -19,7 +29,7 @@ const PopapAlert = ({ type, isShowText = true }: Props) => {
           alt='Картинка'
         />
         <h2 className={styles['popap-alert__title']}>
-          Спасибо за заполнение формы!<br></br>Ваши ответы отправлены!
+          <Title />
         </h2>
       </div>
       {isShowText && (

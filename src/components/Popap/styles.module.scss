@@ -105,6 +105,10 @@
   }
 }
 
+body:has(.popap.show) {
+  overflow: hidden;
+}
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;
@@ -142,10 +146,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  body:has(.popap.show) {
-    overflow: hidden;
-  }
-
   .popap__wrapper {
     padding: 20px;
   }
