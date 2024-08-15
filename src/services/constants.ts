@@ -50,6 +50,7 @@ const initialFormResult = {
   },
   type: 'person_mentor' as FormType,
   is_done: true,
+  is_agent: false,
   isError: false,
   errorMessage: ''
 };

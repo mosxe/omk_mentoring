@@ -84,6 +84,7 @@ export interface ResponseFormResult extends Error {
   person: Collaborator;
   collaborator: Collaborator;
   type: FormType;
+  is_agent: boolean;
   is_done: boolean;
 }
 

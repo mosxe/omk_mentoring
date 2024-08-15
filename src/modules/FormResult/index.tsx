@@ -108,13 +108,25 @@ const FormResult = () => {
 
   const Text = () => {
     if (data.type === 'manager_mentor') {
+      if (data.is_agent) {
+        return (
+          <p className={styles['form-result__text']}>
+            Просим Вас заполнить небольшую анкету о сотруднике{' '}
+            <strong>
+              {data.person.lastname} {data.person.firstname}{' '}
+              {data.person.middlename}, {data.person.position}
+            </strong>{' '}
+            чтобы оценить его потенциал в роли наставника.
+          </p>
+        );
+      }
       return (
         <p className={styles['form-result__text']}>
           Ваш сотрудник{' '}
-          <span className={styles['form-result__text_gray']}>
+          <strong>
             {data.person.lastname} {data.person.firstname}{' '}
             {data.person.middlename}, {data.person.position}
-          </span>
+          </strong>
           , направил в адрес корпоративного университета заявку о желании стать
           наставником по рабочей профессии. Просим Вас заполнить небольшую
           анкету об этом сотруднике, чтобы оценить потенциал кандидата в роли
@@ -125,10 +137,10 @@ const FormResult = () => {
     return (
       <p className={styles['form-result__text']}>
         Ваш сотрудник{' '}
-        <span className={styles['form-result__text_gray']}>
+        <strong>
           {data.person.lastname} {data.person.firstname}{' '}
           {data.person.middlename}, {data.person.position}
-        </span>
+        </strong>
         , направил в адрес корпоративного университета заявку о желании принять
         участие в{' '}
         <span className={styles['form-result__link']}>
@@ -177,10 +189,10 @@ const FormResult = () => {
             </div>
             <p className={styles['form-result__text']}>
               Вы заполнили анкету по сотруднику{' '}
-              <span className={styles['form-result__text_gray']}>
+              <strong>
                 {data.person.lastname} {data.person.firstname}{' '}
                 {data.person.middlename}, {data.person.position}
-              </span>
+              </strong>
               .
             </p>
           </div>
@@ -208,7 +220,7 @@ const FormResult = () => {
               {data.collaborator.middlename}!
             </div>
             <p className={styles['form-result__text']}>
-              Оценка сотрудника успешно делегирована указанному руководителю.{' '}
+              Оценка сотрудника успешно делегирована указанному руководителю.
             </p>
           </div>
         </main>
