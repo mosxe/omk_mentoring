@@ -8,9 +8,10 @@ import styles from './styles.module.scss';
 
 type Props = {
   link: string;
+  text: string;
 };
 
-const Profitable = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
+const Profitable = forwardRef<HTMLDivElement, Props>(({ link, text }, ref) => {
   const [isShowModal, setShowModal] = useState<boolean>(false);
 
   const onShowModalHandler = () => {
@@ -90,8 +91,9 @@ const Profitable = forwardRef<HTMLDivElement, Props>(({ link }, ref) => {
                   className={styles.profitable__card_link}
                   onClick={onShowModalHandler}
                 >
-                  здесь.
+                  здесь
                 </span>
+                {text}
               </div>
             </div>
           </div>

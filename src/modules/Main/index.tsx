@@ -133,14 +133,20 @@ const Main = () => {
           ref={competensceRef}
           link={data.data.link_corporate_competencies_mentor}
           linkHref={data.data.link_program_training}
+          image={data.data.image_competencies_mentor}
         />
         <Support
           news={data.data.news}
           ref={supportRef}
           link={data.data.link_program_training}
           linkFile={data.data.link_file_payments}
+          text={data.data.surcharges_text}
         />
-        <Profitable ref={profitableRef} link={data.data.link_file_payments} />
+        <Profitable
+          ref={profitableRef}
+          link={data.data.link_file_payments}
+          text={data.data.additional_income_text}
+        />
         <Starting ref={startingRef} link={data.data.link_program_training} />
         <Contacts data={data.data.contacts} />
       </main>

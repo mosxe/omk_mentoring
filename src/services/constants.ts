@@ -68,7 +68,10 @@ const initialData = {
     },
     link_corporate_competencies_mentor: '',
     link_program_training: '',
-    link_file_payments: ''
+    link_file_payments: '',
+    image_competencies_mentor: '',
+    surcharges_text: '',
+    additional_income_text: ''
   },
   isError: false,
   errorMessage: ''

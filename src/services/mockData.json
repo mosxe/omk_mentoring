@@ -37,7 +37,10 @@
       },
       "link_corporate_competencies_mentor": "/download_file.html?file_id=7049853312861981279",
       "link_program_training": "/test",
-      "link_file_payments": "/download_file.html?file_id=7049853163063803457"
+      "link_file_payments": "/download_file.html?file_id=7049853163063803457",
+      "image_competencies_mentor": "/download_file.html?file_id=7049853312861981279",
+      "surcharges_text": " (новые ставки будут утверждены в сентрябре 2024 года).",
+      "additional_income_text": " (новые ставки будут утверждены в сентрябре 2024 года)."
     },
     "isError": false,
     "errorMessage": ""

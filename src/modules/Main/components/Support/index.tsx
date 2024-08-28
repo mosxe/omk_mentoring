@@ -13,10 +13,11 @@ type Props = {
   news: New[];
   link: string;
   linkFile: string;
+  text: string;
 };
 
 const Support = forwardRef<HTMLDivElement, Props>(
-  ({ news, link, linkFile }, ref) => {
+  ({ news, link, linkFile, text }, ref) => {
     const [isShowModal, setShowModal] = useState<boolean>(false);
 
     const onShowModalHandler = () => {
@@ -92,7 +93,7 @@ const Support = forwardRef<HTMLDivElement, Props>(
                   >
                     выплаты и доплаты
                   </span>
-                  .
+                  {text}
                 </div>
               </div>
             </div>

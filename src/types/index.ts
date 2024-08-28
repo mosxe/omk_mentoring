@@ -38,6 +38,9 @@ export interface ResponseData extends Error {
     link_corporate_competencies_mentor: string;
     link_program_training: string;
     link_file_payments: string;
+    image_competencies_mentor: string;
+    surcharges_text: string;
+    additional_income_text: string;
   };
 }
 
