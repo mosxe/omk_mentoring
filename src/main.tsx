@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error from 'components/Error';
 import MainPage from './pages/Main';
 import FormResult from './pages/FormResult';
-import ErrorPage from './pages/Error';
 import { register } from 'swiper/element/bundle';
 import './index.css';
 
@@ -12,7 +11,7 @@ register();
 
 const router = createBrowserRouter([
   {
-    path: '/omk_mentoring',
+    path: '/*',
     element: <MainPage />,
     errorElement: <Error />
   },
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
     path: '/omk_mentoring/:id',
     element: <FormResult />,
     errorElement: <Error />
-  },
-  {
-    path: '*',
-    element: <ErrorPage />
   }
 ]);
 
